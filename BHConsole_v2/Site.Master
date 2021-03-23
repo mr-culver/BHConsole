@@ -4,38 +4,42 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title><%: Page.Title %></title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/jquery-3.5.1.js"></script>
+    <script src="Scripts/jquery.validate.js"></script>
+    <script src="Scripts/jquery.mask.js"></script>
+    <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/minty.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <%--Navbar stuff--%>
-        <div class="container dropdown-header">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <asp:LinkButton ID="LinkButton4" CssClass="navbar-brand" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false">Borrowed Hearts</asp:LinkButton>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButton1" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false">Dashboard</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButton2" runat="server" PostBackUrl="~/ShopperCheckin.aspx" CausesValidation="false">Shoppers</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButton3" runat="server" PostBackUrl="~/Volunteers.aspx" CausesValidation="false">Volunteers</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link float-right" ID="LinkButton5" runat="server" PostBackUrl="~/Administrator.aspx" CausesValidation="false">Admin</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonDashboard" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false">Dashboard</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonShoppers" runat="server" PostBackUrl="~/Shopper/ShopperCheckin.aspx" CausesValidation="false">Shoppers</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonVolunteers" runat="server" PostBackUrl="~/Volunteer/Volunteers.aspx" CausesValidation="false">Volunteers</asp:LinkButton>
+                </ul>
+                <ul class="navbar-nav align-content-end">
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogin" runat="server" PostBackUrl="~/Login.aspx" CausesValidation="false">Login</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link font-weight-bold" ID="LinkButtonAdmin" runat="server" PostBackUrl="~/Administration/Administrator.aspx" CausesValidation="false">Admin</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogout" runat="server" CausesValidation="false" OnClick="LinkButtonLogout_Click">Logout</asp:LinkButton>
                 </ul>
             </div>
         </nav>
-        </div>
-        
+        <br />
 
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>

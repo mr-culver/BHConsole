@@ -11,7 +11,31 @@ namespace BHConsole_v2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if(Session["UserId"] == null)
+                {
+                    LinkButtonAdmin.Visible = false;
+                    LinkButtonLogout.Visible = false;
+                    LinkButtonLogin.Visible = true;
+                }
+                else if (Session["UserId"].Equals("admin"))
+                {
+                    LinkButtonAdmin.Visible = true;
+                    LinkButtonLogout.Visible = true;
+                    LinkButtonLogin.Visible = false;
+                }
+            }
+            catch(Exception exc)
+            {
+                throw exc;
+            }
+        }
 
+        protected void LinkButtonLogout_Click(object sender, EventArgs e)
+        {
+            Session["UserId"] = null;
+            Response.Redirect("Default.aspx");
         }
     }
 }
