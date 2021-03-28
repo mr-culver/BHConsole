@@ -23,8 +23,8 @@ namespace BHConsole.Models
 
         public static void ClockIn(VolunteerTimePunch vtp, SqlConnection conn)
         {
-            string volunteerSQL = "EXEC VolunteerClockin @Name, @Phone, @Email, @TimeIn";
-            //TODO: Data validation
+            string volunteerSQL = "INSERT INTO VolunteerTimepunch ([Name],[Email],[Phone],[TimeIn]) VALUES (@Name, @Email, @Phone, @TimeIn)";
+            //string volunteerSQL = "EXEC VolunteerClockin @Name, @Phone, @Email, @TimeIn";
             using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
             {
                 cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
@@ -47,7 +47,7 @@ namespace BHConsole.Models
         public static void ClockOut(Int32 id, SqlConnection conn)
         {
             //Update the correct time_punch using the id
-            string updateSQL = "UPDATE time_punch SET time_out = @TimeOut WHERE id = @Id";
+            string updateSQL = "UPDATE VolunteerTimepunch SET TimeOut = @TimeOut WHERE Id = @Id";
             using (SqlCommand cmd = new SqlCommand(updateSQL, conn))
             {
                 cmd.Parameters.AddWithValue("@Id", id);

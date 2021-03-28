@@ -21,8 +21,9 @@ namespace BHConsole
             if (dd_clockedin.SelectedItem != null)
             {
                 VolunteerTimePunch.ClockOut(Convert.ToInt32(dd_clockedin.SelectedValue), Connection.GetConnection().conn);
-                Session["VolunteerToThank"] = dd_clockedin.SelectedValue.ToString(); // TODO: Add thank you page
-                Response.Redirect("~/Volunteers.aspx"); // Will redirect to thank you page
+                Session["VolunteerToThank"] = dd_clockedin.SelectedItem.ToString(); 
+                /*Session["VolunteerToThank"] = dd_clockedin.SelectedValue.ToString();*/ // TODO: Add thank you page
+                Response.Redirect("~/Default.aspx"); // Will redirect to thank you page
             }
             
 

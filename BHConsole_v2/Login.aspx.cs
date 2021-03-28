@@ -20,14 +20,14 @@ namespace BHConsole_v2
         {
             if (Page.IsValid)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BHDB2ConnectionString"].ConnectionString);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BHDBConnectionString"].ConnectionString);
                 try
                 {
                     if(conn.State == System.Data.ConnectionState.Closed)
                     {
                         conn.Open();
                     }
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE (([User].UserId = @UserId) AND ([User].PasswordHash = @Password))", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE (([User].UserId = @UserId) AND ([User].Password = @Password))", conn);
                     cmd.Parameters.AddWithValue("@UserId", txt_Id.Text.Trim());
                     cmd.Parameters.AddWithValue("@Password", txt_Password.Text.Trim());
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -37,9 +37,11 @@ namespace BHConsole_v2
                         while (dr.Read())
                         {
                             Session["UserId"] = dr.GetValue(1).ToString();
-                            //Session["Permission"] = dr.GetValue(3).ToString();
+                            Session["Permission"] = dr.GetValue(3).ToString();
+                            //lbl_result.Text = dr.GetValue(1).ToString();
+                            //lbl_result.Text = dr.GetValue(3).ToString();
                         }
-                        Response.Redirect("Default.aspx");
+                        //Response.Redirect("Default.aspx");
                     }
                     else
                     {

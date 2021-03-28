@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.6.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.5.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
@@ -83,6 +89,7 @@
     <Content Include="Content\minty.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Images\balloonsjyslogo.jpg" />
     <Content Include="Images\bhf-logo.png" />
     <Content Include="Images\e_for_everyone.png" />
     <Content Include="Images\Gayla-Cake-Logo.png" />
@@ -120,6 +127,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -192,6 +200,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Shopper\ShopperCheckin.aspx" />
+    <Content Include="Volunteer\ClockinConfirmation.aspx" />
+    <Content Include="Volunteer\ClockoutConfirmation.aspx" />
     <Content Include="Volunteer\VolunteerClockin.aspx" />
     <Content Include="Volunteer\VolunteerClockout.aspx" />
     <Content Include="Volunteer\Volunteers.aspx" />
@@ -240,6 +250,20 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Volunteer\ClockinConfirmation.aspx.cs">
+      <DependentUpon>ClockinConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Volunteer\ClockinConfirmation.aspx.designer.cs">
+      <DependentUpon>ClockinConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Volunteer\ClockoutConfirmation.aspx.cs">
+      <DependentUpon>ClockoutConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Volunteer\ClockoutConfirmation.aspx.designer.cs">
+      <DependentUpon>ClockoutConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Volunteer\VolunteerClockin.aspx.cs">
       <DependentUpon>VolunteerClockin.aspx</DependentUpon>

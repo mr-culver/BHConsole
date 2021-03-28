@@ -15,15 +15,15 @@
                     </div>
                     <div class="bs-component">
                         <div class="form-group">
-                            <label for="txt_name"><strong>Name</strong></label><asp:Label ID="Label2" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                            <label for="txt_name"><strong>Name</strong></label><asp:Label ID="Label2" runat="server" Text=" * " CssClass="text-danger"></asp:Label>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Name is required" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="txt_name" runat="server" placeholder="First Last" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label for="txt_email"><strong>Email address</strong></label><asp:Label ID="Label1" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Email is required" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid Email Format" ControlToValidate="txt_email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Text="Invalid Email Format"></asp:RegularExpressionValidator>
-                            <asp:TextBox ID="txt_email" CssClass="form-control" runat="server" placeholder="JaneDoe@example.com"></asp:TextBox>
+                            <label for="txt_email"><strong>Email address</strong></label><%--<asp:Label ID="Label1" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>--%>
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Email is required" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage=" Invalid Email Format" ControlToValidate="txt_email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Text="Invalid Email Format"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="txt_email" CssClass="form-control" runat="server" placeholder="Volunteer@example.com"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label for="txt_phone"><strong>Phone number</strong></label>
