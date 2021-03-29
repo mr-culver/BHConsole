@@ -13,7 +13,8 @@ namespace BHConsole_v2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_result.CssClass = "text-warning";
+            lbl_result.Text = "";
         }
 
         protected void btn_Login_Click(object sender, EventArgs e)
@@ -41,6 +42,8 @@ namespace BHConsole_v2
                             //lbl_result.Text = dr.GetValue(1).ToString();
                             //lbl_result.Text = dr.GetValue(3).ToString();
                         }
+                        lbl_result.CssClass = "text-success";
+                        lbl_result.Text = "Login success";
                         //Response.Redirect("Default.aspx");
                     }
                     else

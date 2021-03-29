@@ -15,6 +15,15 @@ namespace BHConsole_v2.Administration
     {
 
         /// <summary>
+        /// lbl_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_error;
+
+        /// <summary>
         /// lbl_volunteerMonthYear control.
         /// </summary>
         /// <remarks>

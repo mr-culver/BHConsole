@@ -3,25 +3,26 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <div class="row-cols-1">
+        
             <div class="jumbotron">
-                <h1><strong>Welcome to Borrowed Hearts!</strong></h1>
+                
+                <h1 class="display-4">Welcome to Borrowed Hearts!</h1>
                 <hr />
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2>Here to shop?</h2>
-                        <asp:Button ID="btn_shop" CssClass="btn btn-primary btn-lg btn-block" runat="server" Text="Shopper Form" PostBackUrl="~/ShopperCheckin.aspx" Height="100px" Font-Bold="True" />
+                        <%--<h3 class="display-4">Here to shop?</h3>--%>
+                        <asp:Button ID="btn_shop" CssClass="btn btn-info btn-lg btn-block" runat="server" Text="Shopper Form" PostBackUrl="~/Shopper/ShopperCheckin.aspx" Height="100px" Font-Bold="True" Font-Size="XX-Large" />
                     </div>
                     <div class="col-lg-6">
-                        <h2>Here to volunteer?</h2>
-                        <asp:Button ID="btn_volunteer" CssClass="btn btn-success btn-lg btn-block" runat="server" Text="Volunteer Clock In" PostBackUrl="~/VolunteerClockin.aspx"  Height="100px" Font-Bold="True" />
+                        <%--<h3 class="display-4">Here to volunteer?</h3>--%>
+                        <asp:Button ID="btn_volunteer" CssClass="btn btn-info btn-lg btn-block" runat="server" Text="Volunteer Clock In" PostBackUrl="~/Volunteer/VolunteerClockin.aspx"  Height="100px" Font-Bold="True" Font-Size="XX-Large" />
                     </div>
                 </div>
             </div>
             <br />
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card border-primary mb-3" style="max-width: 35rem">
+                    <div class="card border-primary mb-3">
                         <div class="card-header">Mission Statement</div>
                         <div class="card-body">
                             <p class="card-text">
@@ -43,13 +44,27 @@
                             </ul>
                         </div>--%>
                     </div>
+                    <div class="card border-primary mb-3" draggable="false">
+                        <div class="card-header">Donate with Venmo</div>
+                        <div class="card-body">
+                            <%--<h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>--%>
+                            <br />
+                            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/bhdonateqr.jpeg" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice"/>
+                        </div>
+                        <div class="card-body">
+                            <asp:LinkButton ID="LinkButton2" class="btn btn-info btn-block" runat="server" href="https://www.borrowedheartsfoundation.org/donate.html">More ways to donate</asp:LinkButton>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card border-secondary mb-3" style="max-width: 35rem" draggable="false">
-                            <div class="card-header">Pancake Breakfast</div>
+                    <div class="card border-secondary mb-3" draggable="false">
+                            <div class="card-header">Fundraising Events</div>
                         <div class="card-body">
-                            <h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>
-                            <br />
+                            <p class="card-text">
+                                Placeholder for new event coming for 2021
+                            </p>
+                            <h5 class="card-title">Last year's event...</h5>
+                            <%--<h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>--%>
                             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/pancake_breakfast.png" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice"/>
                         </div>
                         <div class="card-body">
@@ -58,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card border-info mb-3" style="max-width: 35rem">
+                    <div class="card border-info mb-3" >
                         <div class="card-header">Birthday Resources!</div>
                         <div class="card-body">
                             <%--<h5 class="card-title align-content-center">Sponsors</h5>--%>
@@ -79,6 +94,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-4">
+                    
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+        
     </div>
 </asp:Content>
