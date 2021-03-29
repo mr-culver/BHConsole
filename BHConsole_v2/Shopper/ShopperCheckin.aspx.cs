@@ -22,7 +22,7 @@ namespace BHConsole
             if (Page.IsValid)
             {
                 int numberOfChildren;
-                int relationToChildren;
+                string relationToChildren;
 
                 numberOfChildren = Convert.ToInt32(txt_numberOfChildren.Text);
                 if (numberOfChildren > 250 || numberOfChildren < 0)
@@ -30,7 +30,7 @@ namespace BHConsole
                     numberOfChildren = 250;
                 }
 
-                relationToChildren = rbl_relationship.SelectedIndex;
+                relationToChildren = rbl_relationship.SelectedValue;
 
                 ShopperVisit shopperVisit = new ShopperVisit(txt_name.Text, txt_email.Text, txt_phone.Text, txt_address.Text, rbl_firstTime.SelectedIndex, numberOfChildren, txt_caseWorker.Text, relationToChildren, txt_other.Text);
                 ShopperVisit.CheckIn(shopperVisit, Connection.GetConnection().conn);

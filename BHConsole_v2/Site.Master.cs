@@ -13,13 +13,13 @@ namespace BHConsole_v2
         {
             try
             {
-                if(Session["UserId"] == null)
+                if(Session["Permission"] == null || Session["Permission"].Equals("0"))
                 {
-                    LinkButtonAdmin.Visible = false;
+                    //LinkButtonAdmin.Visible = false;
                     LinkButtonLogout.Visible = false;
                     LinkButtonLogin.Visible = true;
                 }
-                else if (Session["UserId"].Equals("admin"))
+                else if (Session["Permission"].Equals("9"))
                 {
                     LinkButtonAdmin.Visible = true;
                     LinkButtonLogout.Visible = true;
@@ -35,7 +35,8 @@ namespace BHConsole_v2
         protected void LinkButtonLogout_Click(object sender, EventArgs e)
         {
             Session["UserId"] = null;
-            Response.Redirect("Default.aspx");
+            Session["Permission"] = null;
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

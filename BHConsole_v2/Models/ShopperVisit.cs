@@ -20,7 +20,7 @@ namespace BHConsole.Models
             int firstVisit, 
             int numberOfChildren, 
             string caseWorkerName, 
-            int relationToChildren, 
+            string relationToChildren, 
             string relationOtherDescription
             )
         {
@@ -39,7 +39,7 @@ namespace BHConsole.Models
 
         public static void CheckIn(ShopperVisit shopperVisit, SqlConnection conn)
         {
-            string shopperSQL = "EXEC ShopperCheckin @Name, @Email, @Phone, @Address, @FirstVisit, @NumberOfChildren, @CaseWorkerName, @RelationToChildren, @RelationOtherDescription";
+            string shopperSQL = "EXEC ShopperCheckin @Name, @Email, @Phone, @Address, @FirstVisit, @NumberOfChildren, @CaseWorkerName, @RelationToChildren, @RelationOtherDescription, @Timestamp";
             using (SqlCommand cmd = new SqlCommand(shopperSQL, conn))
             {
                 cmd.Parameters.AddWithValue("@Name", shopperVisit.shopper.Name);
@@ -51,6 +51,7 @@ namespace BHConsole.Models
                 cmd.Parameters.AddWithValue("@CaseWorkerName", shopperVisit.visit.CaseWorkerName);
                 cmd.Parameters.AddWithValue("@RelationToChildren", shopperVisit.visit.RelationToChildren);
                 cmd.Parameters.AddWithValue("@RelationOtherDescription", shopperVisit.visit.RelationOtherDescription);
+                cmd.Parameters.AddWithValue("@Timestamp", System.DateTime.Now.ToString());
 
                 try
                 {

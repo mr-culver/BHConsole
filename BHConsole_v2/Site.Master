@@ -11,8 +11,8 @@
     <script src="Scripts/jquery-3.5.1.js"></script>
     <script src="Scripts/jquery.validate.js"></script>
     <script src="Scripts/jquery.mask.js"></script>
-    <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/popper.js"></script>
     <link href="Content/minty.css" rel="stylesheet" />
 </head>
 <body>
@@ -30,8 +30,8 @@
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonVolunteers" runat="server" PostBackUrl="~/Volunteer/Volunteers.aspx" CausesValidation="false">Volunteers</asp:LinkButton>
                 </ul>
                 <ul class="navbar-nav align-content-end">
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogin" runat="server" PostBackUrl="~/Login.aspx" CausesValidation="false">Login</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link font-weight-bold" ID="LinkButtonAdmin" runat="server" PostBackUrl="~/Administration/Administrator.aspx" CausesValidation="false">Admin</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogin" runat="server" PostBackUrl="~/Login.aspx" CausesValidation="false">Login</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogout" runat="server" CausesValidation="false" OnClick="LinkButtonLogout_Click">Logout</asp:LinkButton>
                 </ul>
             </div>

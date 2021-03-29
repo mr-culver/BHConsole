@@ -13,8 +13,8 @@
                     </div>
                     <div class="bs-component">
                         <div class="form-group">
-                            <asp:DropDownList ID="dd_clockedin" CssClass="form-control" runat="server" DataSourceID="BHDBsource" DataTextField="name" DataValueField="time_punch_id" style="margin-bottom: 0"></asp:DropDownList>
-                            <asp:SqlDataSource ID="BHDBsource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT name, time_punch_id FROM view_all_volunteer_clocks WHERE (time_out IS NULL)">    
+                            <asp:DropDownList ID="dd_clockedin" CssClass="form-control" runat="server" DataSourceID="BHDBsource" DataTextField="Name" DataValueField="Id" style="margin-bottom: 0"></asp:DropDownList>
+                            <asp:SqlDataSource ID="BHDBsource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [VolunteerTimepunch] WHERE ([TimeOut] IS NULL) ORDER BY [TimeIn]">    
                             </asp:SqlDataSource>
                         </div>
                         <div class="form-group">

@@ -20,12 +20,12 @@ namespace BHConsole
 
         protected void btn_clockin_Click(object sender, EventArgs e)
         {
-            VolunteerTimePunch vtp = new VolunteerTimePunch(txt_name.Text, txt_phone.Text, txt_email.Text);
+            VolunteerTimePunch vtp = new VolunteerTimePunch(txt_name.Text.Trim(), txt_phone.Text, txt_email.Text);
 
             VolunteerTimePunch.ClockIn(vtp, Connection.GetConnection().conn);
 
             //TODO: Redirect to clockin confirmation page or something
-            Response.Redirect("~/Volunteers.aspx");
+            Response.Redirect("~/Default.aspx");
         }
     }
 }
