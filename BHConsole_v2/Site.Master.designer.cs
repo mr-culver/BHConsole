@@ -69,15 +69,6 @@ namespace BHConsole_v2
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonVolunteers;
 
         /// <summary>
-        /// LinkButtonAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButtonAdmin;
-
-        /// <summary>
         /// LinkButtonLogin control.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,15 @@ namespace BHConsole_v2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonLogout;
+
+        /// <summary>
+        /// LinkButtonAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonAdmin;
 
         /// <summary>
         /// MainContent control.

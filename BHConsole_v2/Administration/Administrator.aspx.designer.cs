@@ -60,12 +60,21 @@ namespace BHConsole_v2.Administration
         protected global::System.Web.UI.WebControls.SqlDataSource VolunteerOverviewDataSource;
 
         /// <summary>
-        /// FormView1 control.
+        /// VolunteerOverviewFormView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.FormView VolunteerOverviewFormView;
+
+        /// <summary>
+        /// VolunteerOverviewDetailDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource VolunteerOverviewDetailDataSource;
     }
 }
