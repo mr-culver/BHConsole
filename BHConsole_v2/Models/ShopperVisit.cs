@@ -12,7 +12,7 @@ namespace BHConsole.Models
         private Visit visit;
 
         public ShopperVisit 
-            (
+        (
             string name, 
             string email, 
             string phone, 
@@ -22,7 +22,7 @@ namespace BHConsole.Models
             string caseWorkerName, 
             string relationToChildren, 
             string relationOtherDescription
-            )
+        )
         {
             this.shopper = new Shopper();
             this.shopper.Name = name;

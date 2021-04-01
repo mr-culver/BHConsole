@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="Volunteer Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Volunteers.aspx.cs" Inherits="BHConsole.Volunteers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <div class="container">
-        <h1>Volunteers</h1>
+        <h1 class="display-4">Volunteers</h1>
         <hr />
         <div class="row">
             <div class="col-lg-6">

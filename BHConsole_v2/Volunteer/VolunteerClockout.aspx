@@ -1,12 +1,14 @@
 ﻿<%@ Page Title="Volunteer Clock Out" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VolunteerClockout.aspx.cs" Inherits="BHConsole.VolunteerClockout" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <div class="container">
-        <h1>Volunteers</h1>
+        <h1 class="display-4">Volunteers</h1>
         <hr />
         <div class="row">
             <div class="col">
                 <fieldset>
-                    <legend>Volunteer Clock Out</legend>
+                    <legend>Clock Out</legend>
                     <div class="form-group">
                         <p>Thank you for your help!</p>
                         

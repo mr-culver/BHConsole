@@ -4,9 +4,11 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery.mask.js"></script>
     <div class="container">
-        <h1>Hello Shopper!</h1>
+        <h1 class="display-4">Hello Shopper!</h1>
         <hr />
         <%--Test to show that JQuery has loaded and is running--%> 
         <%--<script type="text/javascript">
@@ -21,7 +23,7 @@
                 <fieldset>
                     <legend>Check In Form</legend>
                     <div class="form-group">
-                        <p>Please fill in the information below and the store clerk will guide you in the right direction. </p>
+                        <p class="text-body">Please fill in the information below and the store clerk will guide you in the right direction. </p>
                     </div>
                     <div class="bs-component">
                         <%--Name--%>

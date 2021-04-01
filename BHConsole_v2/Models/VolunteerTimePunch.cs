@@ -6,60 +6,66 @@ using System.Web;
 
 namespace BHConsole.Models
 {
-    public class VolunteerTimePunch
+    public class VolunteerTimepunch
     {
         private Volunteer volunteer;
-        private TimePunch timePunch;
+        private Timepunch timepunch;
 
-        public VolunteerTimePunch(string name, string phone, string email)
+        public VolunteerTimepunch(string name, string phone, string email)
         {
             this.volunteer = new Volunteer();
             this.volunteer.Name = name;
             this.volunteer.Phone = phone;
             this.volunteer.Email = email;
-            this.timePunch = new TimePunch();
-            this.timePunch.ClockInTime = System.DateTime.Now;
+            this.timepunch = new Timepunch();
+            this.timepunch.ClockInTime = System.DateTime.Now;
         }
 
-        public static void ClockIn(VolunteerTimePunch vtp, SqlConnection conn)
+        public static void ClockIn(VolunteerTimepunch vtp)
         {
             string volunteerSQL = "INSERT INTO VolunteerTimepunch ([Name],[Email],[Phone],[TimeIn]) VALUES (@Name, @Email, @Phone, @TimeIn)";
             //string volunteerSQL = "EXEC VolunteerClockin @Name, @Phone, @Email, @TimeIn";
-            using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
+            using (SqlConnection conn = Connection.GetConnection())
             {
-                cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
-                cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
-                cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
-                cmd.Parameters.AddWithValue("@TimeIn", vtp.timePunch.ClockInTime);
+                using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
+                    cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
+                    cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
+                    cmd.Parameters.AddWithValue("@TimeIn", vtp.timepunch.ClockInTime);
 
-                try
-                {
-                    conn.Open();
-                    cmd.ExecuteScalar();
-                }
-                finally
-                {
-                    conn.Close();
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteScalar();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
             }
         }
 
-        public static void ClockOut(Int32 id, SqlConnection conn)
+        public static void ClockOut(Int32 id)
         {
             //Update the correct time_punch using the id
             string updateSQL = "UPDATE VolunteerTimepunch SET TimeOut = @TimeOut WHERE Id = @Id";
-            using (SqlCommand cmd = new SqlCommand(updateSQL, conn))
+            using (SqlConnection conn = Connection.GetConnection())
             {
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@TimeOut", DateTime.Now);
-                try
+                using (SqlCommand cmd = new SqlCommand(updateSQL, conn))
                 {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                finally
-                {
-                    conn.Close();
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@TimeOut", DateTime.Now);
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
             }
         }

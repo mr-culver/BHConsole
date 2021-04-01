@@ -5,10 +5,9 @@ using System.Web;
 
 namespace BHConsole.Models
 {
-    public class TimePunch
+    public class Timepunch
     {
         public DateTime ClockInTime { get; set; }
-
-        DateTime ClockOutTime { get; set; } //Uneeded?
+        public DateTime ClockOutTime { get; set; }
     }
 }
