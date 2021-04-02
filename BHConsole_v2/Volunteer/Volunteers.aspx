@@ -7,19 +7,17 @@
         <hr />
         <div class="row">
             <div class="col-lg-6">
-                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockin.aspx">Clock In</asp:LinkButton>
+                <asp:LinkButton ID="lbtn_clockin" CssClass="btn btn-success btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockin.aspx" Font-Size="XX-Large">Clock In</asp:LinkButton>
             </div>
             <div class="col-lg-6">
-                <asp:LinkButton ID="LinkButton2" CssClass="btn btn-danger btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockout.aspx">Clock Out</asp:LinkButton>
+                <asp:LinkButton ID="lbtn_clockout" CssClass="btn btn-danger btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockout.aspx" Font-Size="XX-Large">Clock Out</asp:LinkButton>
             </div>
         </div>
-        <br />
+        <hr />
         <div class="row">
             <div class="col">
-            </div>
-            <div class="col-lg-6">
-            </div>
-            <div class="col">
+                <h4>Currently Volunteering</h4>
+                <asp:GridView ID="VolunteerSimpleGridView" runat="server" EmptyDataText="No one is currently clocked in."></asp:GridView>
             </div>
         </div>
     </div>

@@ -15,21 +15,30 @@ namespace BHConsole
     {
 
         /// <summary>
-        /// LinkButton1 control.
+        /// lbtn_clockin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_clockin;
 
         /// <summary>
-        /// LinkButton2 control.
+        /// lbtn_clockout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_clockout;
+
+        /// <summary>
+        /// VolunteerSimpleGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView VolunteerSimpleGridView;
     }
 }

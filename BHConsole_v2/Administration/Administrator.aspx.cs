@@ -31,6 +31,7 @@ namespace BHConsole_v2.Administration
                 Session["Day"] = System.DateTime.Now.Day.ToString();
             }
             SetTimeLabels();
+            
             //var parameter = VolunteerOverviewDetailDataSource.SelectParameters;
             //parameter["@Time"].DefaultValue = System.DateTime.Now.ToString();
             //ClockedInDataSource.Select(new DataSourceSelectArguments());
@@ -108,6 +109,7 @@ namespace BHConsole_v2.Administration
             {
                 lbl_error.Text = exc.Message;
             }
+            Page.SetFocus(VolunteerOverview);
         }
         protected void btn_clockout_Click(object sender, EventArgs e)
         {
@@ -117,6 +119,7 @@ namespace BHConsole_v2.Administration
                 ClockedInDataSource.Select(new DataSourceSelectArguments());
                 ClockedInGridview.DataBind();
                 ClockedInDataSource.DataBind();
+                Page.SetFocus(btn_clockout);
                 //Session["VolunteerToThank"] = dd_clockedin.SelectedItem.ToString();
                 /*Session["VolunteerToThank"] = dd_clockedin.SelectedValue.ToString();*/ // TODO: Add thank you page
                 /*Response.Redirect("~/Default.aspx");*/ // Will redirect to thank you page
