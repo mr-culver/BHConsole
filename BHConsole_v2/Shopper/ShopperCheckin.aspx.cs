@@ -33,7 +33,7 @@ namespace BHConsole
                 relationToChildren = rbl_relationship.SelectedValue;
 
                 ShopperVisit shopperVisit = new ShopperVisit(txt_name.Text, txt_email.Text, txt_phone.Text, txt_address.Text, rbl_firstTime.SelectedIndex, numberOfChildren, txt_caseWorker.Text, relationToChildren, txt_other.Text);
-                ShopperVisit.CheckIn(shopperVisit, Connection.GetConnection().conn);
+                ShopperVisit.CheckIn(shopperVisit, Connection.GetConnection());
                 Response.Redirect("~/Default.aspx");
             }
             else

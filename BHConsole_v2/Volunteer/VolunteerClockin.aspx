@@ -1,17 +1,19 @@
 ﻿<%@ Page Title="Volunteer Clock In" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VolunteerClockin.aspx.cs" Inherits="BHConsole.VolunteerClockin" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery-3.5.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <div class="container">
         <script src="../Scripts/jquery.mask.js"></script>
-        <h1>Volunteers</h1>
+        <h1 class="display-4">Volunteers</h1>
         <hr />
 
         <div class="row">
             <div class="col align-self-center">
                 <fieldset>
-                    <legend>Volunteer Clock In</legend>
+                    <legend>Clock In</legend>
                     <div class="form-group">
-                        <small>We will never share your info with anyone else.</small>
+                        <p class="text-body">We will never share your info with anyone else.</p>
                     </div>
                     <div class="bs-component">
                         <div class="form-group">
@@ -23,7 +25,7 @@
                             <label for="txt_email"><strong>Email address</strong></label><%--<asp:Label ID="Label1" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>--%>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Email is required" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage=" Invalid Email Format" ControlToValidate="txt_email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Text="Invalid Email Format"></asp:RegularExpressionValidator>
-                            <asp:TextBox ID="txt_email" CssClass="form-control" runat="server" placeholder="Volunteer@example.com"></asp:TextBox>
+                            <asp:TextBox ID="txt_email" CssClass="form-control" runat="server" placeholder="Volunteer@example.com" ></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label for="txt_phone"><strong>Phone number</strong></label>
@@ -39,7 +41,7 @@
                             <asp:ValidationSummary ID="ValidationSummaryVolunteerClockin" runat="server" CssClass="text-danger" />
                         </div>
                         <div class="form-group">
-                            <asp:Button ID="btn_clockin" class="btn btn-primary btn-lg btn-block" runat ="server" Text="Clock In" OnClick="btn_clockin_Click" />
+                            <asp:Button ID="btn_clockin" class="btn btn-primary btn-lg btn-block" runat ="server" Text="Clock In" OnClick="btn_clockin_Click"/>
                         </div>
                     </div>
                 </fieldset>

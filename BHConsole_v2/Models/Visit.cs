@@ -12,6 +12,5 @@ namespace BHConsole.Models
         public string CaseWorkerName { get; set; }
         public string RelationToChildren { get; set; }
         public string RelationOtherDescription { get; set; }
-
     }
 }
