@@ -44,7 +44,7 @@ namespace BHConsole_v2
                         }
                         lbl_result.CssClass = "text-success";
                         lbl_result.Text = "Login success";
-                        //Response.Redirect("Default.aspx");
+                        Response.Redirect("~/Administration/Administrator.aspx");
                     }
                     else
                     {
@@ -60,6 +60,7 @@ namespace BHConsole_v2
                 {
                     conn.Close();
                 }
+                
             }
         }
     }
