@@ -21,6 +21,11 @@ namespace BHConsole.Models
             this.timepunch.ClockInTime = System.DateTime.Now;
         }
 
+        public VolunteerTimepunch()
+        {
+
+        }
+
         public static void ClockIn(VolunteerTimepunch vtp)
         {
             string volunteerSQL = "INSERT INTO VolunteerTimepunch ([Name],[Email],[Phone],[TimeIn]) VALUES (@Name, @Email, @Phone, @TimeIn)";
@@ -61,6 +66,38 @@ namespace BHConsole.Models
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+        public static int TotalVolunteerHours(int month, int year)
+        {
+            int total;
+            string sql = "EXEC SelectVolunteerHours @Month, @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        var v = cmd.ExecuteScalar();
+                        if (v == null)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            total = Convert.ToInt32(v);
+                            return total;
+                        }
                     }
                     finally
                     {
