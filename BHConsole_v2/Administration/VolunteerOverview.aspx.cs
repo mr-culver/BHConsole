@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Jitbit.Utils;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace BHConsole_v2.Administration
 {
@@ -59,6 +62,119 @@ namespace BHConsole_v2.Administration
         protected void VolunteerOverviewDetailDataSource_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
             VolunteerOverviewGridView.DataBind();
+        }
+
+        protected void btn_exportMonth_Click(object sender, EventArgs e)
+        {
+            DownloadVolunteerTimepunchesMonth(new DateTime(Convert.ToInt32((string)Session["Year"]), Convert.ToInt32((string)Session["Month"]), Convert.ToInt32((string)Session["Day"])));
+        }
+
+        protected void btn_exportDay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DownloadVolunteerTimepunchesMonth(DateTime date)
+        {
+            string sql = "EXEC SelectVolunteerShifts @Month, @Year";
+            var myExport = new CsvExport();
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    //cmd.Parameters.AddWithValue("@Month", System.DateTime.Now.Month);
+                    //cmd.Parameters.AddWithValue("@Year", System.DateTime.Now.Year);
+                    cmd.Parameters.AddWithValue("@Month", date.Month);
+                    cmd.Parameters.AddWithValue("@Year", date.Year);
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    myExport.AddRow();
+                                    myExport["Time In"] = dr.GetValue(0).ToString();
+                                    myExport["Name"] = dr.GetValue(1).ToString();
+                                    myExport["Email"] = dr.GetValue(2).ToString();
+                                    myExport["Phone"] = dr.GetValue(3).ToString();
+                                    myExport["Hours"] = dr.GetValue(4).ToString();
+                                }
+                                myExport.ExportToFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                FileInfo file = new FileInfo(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                if (file.Exists)
+                                {
+                                    Response.Clear();
+                                    Response.ContentType = "application/octet-stream";
+                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches.csv");
+                                    Response.TransmitFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                    Response.End();
+                                    file.Delete();
+                                }
+
+                            }
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        throw exc;
+                    }
+                }
+            }
+        }
+
+        private void DownloadVolunteerTimepunchesDay(DateTime date)
+        {
+            string sql = "EXEC SelectVolunteerShifts @Day, @Month, @Year";
+            var myExport = new CsvExport();
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    //cmd.Parameters.AddWithValue("@Month", System.DateTime.Now.Month);
+                    //cmd.Parameters.AddWithValue("@Year", System.DateTime.Now.Year);
+                    cmd.Parameters.AddWithValue("@Day", date.Day);
+                    cmd.Parameters.AddWithValue("@Month", date.Month);
+                    cmd.Parameters.AddWithValue("@Year", date.Year);
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    myExport.AddRow();
+                                    myExport["Time In"] = dr.GetValue(0).ToString();
+                                    myExport["Name"] = dr.GetValue(1).ToString();
+                                    myExport["Email"] = dr.GetValue(2).ToString();
+                                    myExport["Phone"] = dr.GetValue(3).ToString();
+                                    myExport["Hours"] = dr.GetValue(4).ToString();
+                                }
+                                myExport.ExportToFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                FileInfo file = new FileInfo(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                if (file.Exists)
+                                {
+                                    Response.Clear();
+                                    Response.ContentType = "application/octet-stream";
+                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches.csv");
+                                    Response.TransmitFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
+                                    Response.End();
+                                    file.Delete();
+                                }
+
+                            }
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        throw exc;
+                    }
+                }
+            }
         }
     }
 }

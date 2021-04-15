@@ -59,6 +59,15 @@
             </div>
             <div class="col col-lg-6 col-md-12 col-sm-12">
                 <br />
+                <div class="row">
+                    <div class="col">
+                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-primary btn-block " OnClick="btn_exportMonth_Click" />
+                    </div>
+                    <div class="col">
+                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-primary btn-block" OnClick="btn_exportDay_Click" />
+                    </div>
+                </div>
+                
                 <asp:Label ID="lbl_error" runat="server" Text="Label" CssClass="test-danger"></asp:Label>
             </div>
         </div>
@@ -217,7 +226,9 @@
                                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                             </InsertItemTemplate>
                             <ItemTemplate>
+                                <div class="form-group">
                                     <label for="txt_name"><strong>Name</strong></label><asp:TextBox ID="txt_name" class="form-control" runat="server" Text='<%# Bind("Name") %>' ReadOnly="true"></asp:TextBox>
+                                </div>
                                 <div class="form-group">
                                     <label for="txt_email"><strong>Email</strong></label><asp:TextBox ID="txt_email" runat="server" CssClass="form-control" Text='<%# Bind("Email") %>' ReadOnly="true"></asp:TextBox>
                                 </div>
