@@ -14,33 +14,29 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //lbl_time.Text = System.DateTime.Now.ToString();
-            //lbl_error.Text = "";
-            //ClockedInDataSource.DataBind();
-            //ClockedInGridview.DataBind();
-            //VisitDataSource.DataBind();
-            //VisitDataSource.DataBind();
-            //VisitDetailsDataSource.DataBind();
-            //VisitDetailsDataSource.DataBind();
-            //// if session objects are null, set to default (this month/year)
-            //if (Session["Year"] == null || Session["Year"].Equals(""))
-            //{
-            //    lbl_error.Text = "";
-            //    Session["Year"] = System.DateTime.Now.Year.ToString();
-            //    Session["Month"] = System.DateTime.Now.Month.ToString();
-            //    Session["Day"] = System.DateTime.Now.Day.ToString();
-            //}
-            //SetTimeLabels();
-            
-            //var parameter = VolunteerOverviewDetailDataSource.SelectParameters;
-            //parameter["@Time"].DefaultValue = System.DateTime.Now.ToString();
-            //ClockedInDataSource.Select(new DataSourceSelectArguments());
-            //ClockedInGridview.DataBind();
+            lbl_time.Text = System.DateTime.Now.ToString();
+            if (Session["Year"] == null || Session["Year"].Equals(""))
+            {
+                Session["Year"] = System.DateTime.Now.Year.ToString();
+                Session["Month"] = System.DateTime.Now.Month.ToString();
+                Session["Day"] = System.DateTime.Now.Day.ToString();
+            }
+            ClockedInGridview.DataBind();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btn_clockout_Click(object sender, EventArgs e)
         {
-
+            if (dd_clockedin.SelectedItem != null)
+            {
+                VolunteerTimepunch.ClockOut(Convert.ToInt32(dd_clockedin.SelectedValue));
+                ClockedInDataSource.Select(new DataSourceSelectArguments());
+                ClockedInGridview.DataBind();
+                ClockedInDataSource.DataBind();
+                dd_clockedin.SelectedValue = null;
+                //Session["VolunteerToThank"] = dd_clockedin.SelectedItem.ToString();
+                /*Session["VolunteerToThank"] = dd_clockedin.SelectedValue.ToString();*/ // TODO: Add thank you page
+                /*Response.Redirect("~/Default.aspx");*/ // Will redirect to thank you page
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,11 +19,8 @@ namespace BHConsole_v2
                     LinkButtonAdmin.Visible = false;
                     LinkButtonLogout.Visible = false;
                     LinkButtonLogin.Visible = true;
-                    //LinkButtonVisitsAdmin.Visible = false;
-                    //LinkButtonClockedinAdmin.Visible = false;
-                    //LinkButtonShoppersAdmin.Visible = false;
-                    //LinkButtonVolunteersAdmin.Visible = false;
-                    LinkButtonExport.Visible = false;
+                    LinkButtonVisitsAdmin.Visible = false;
+                    LinkButtonVolunteersAdmin.Visible = false;
                     LinkButtonDashboard.Visible = true;
                 }
                 else if (Session["Permission"].Equals("9"))
@@ -33,10 +31,7 @@ namespace BHConsole_v2
                     LinkButtonAdmin.Visible = true;
                     LinkButtonLogout.Visible = true;
                     LinkButtonLogin.Visible = false;
-                    LinkButtonClockedinAdmin.Visible = true;
-                    LinkButtonShoppersAdmin.Visible = true;
                     LinkButtonVolunteersAdmin.Visible = true;
-                    LinkButtonExport.Visible = true;
                     LinkButtonDashboard.Visible = false;
                 }
             }

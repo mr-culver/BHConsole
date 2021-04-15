@@ -60,6 +60,24 @@ namespace BHConsole_v2.Administration
         protected global::System.Web.UI.WebControls.TextBox txt_shopperMonthYear;
 
         /// <summary>
+        /// btn_exportMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_exportMonth;
+
+        /// <summary>
+        /// btn_exportDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_exportDay;
+
+        /// <summary>
         /// lbl_error control.
         /// </summary>
         /// <remarks>

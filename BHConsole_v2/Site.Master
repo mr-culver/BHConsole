@@ -31,10 +31,10 @@
                 </ul>
                 <ul class="navbar-nav align-content-end">
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonVolunteersAdmin" runat="server" PostBackUrl="~/Administration/VolunteerOverview.aspx" CausesValidation="false">Volunteers</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonClockedinAdmin" runat="server" PostBackUrl="~/Administration/VolunteerClockedin.aspx" CausesValidation="false">Clocked In</asp:LinkButton>
+                    <%--<asp:LinkButton CssClass="nav-link" ID="LinkButtonClockedinAdmin" runat="server" PostBackUrl="~/Administration/VolunteerClockedin.aspx" CausesValidation="false">Clocked In</asp:LinkButton>--%>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonVisitsAdmin" runat="server" PostBackUrl="~/Administration/ShopperVisitOverview.aspx" CausesValidation="false">Visits</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonShoppersAdmin" runat="server" PostBackUrl="~/Administration/ShopperOverview.aspx" CausesValidation="false">Shoppers</asp:LinkButton>
-                    <asp:LinkButton CssClass="nav-link" ID="LinkButtonExport" runat="server" PostBackUrl="~/Administration/Export.aspx" CausesValidation="false">Export</asp:LinkButton>
+                    <%--<asp:LinkButton CssClass="nav-link" ID="LinkButtonShoppersAdmin" runat="server" PostBackUrl="~/Administration/ShopperOverview.aspx" CausesValidation="false">Shoppers</asp:LinkButton>--%>
+                    <%--<asp:LinkButton CssClass="nav-link" ID="LinkButtonExport" runat="server" PostBackUrl="~/Administration/Export.aspx" CausesValidation="false">Export</asp:LinkButton>--%>
                     <asp:LinkButton CssClass="nav-link font-weight-bolder" ID="LinkButtonAdmin" runat="server" PostBackUrl="~/Administration/Administrator.aspx" CausesValidation="false">Administrator Dashboard</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogin" runat="server" PostBackUrl="~/Login.aspx" CausesValidation="false">Admin Login</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButtonLogout" runat="server" CausesValidation="false" OnClick="LinkButtonLogout_Click">Logout</asp:LinkButton>

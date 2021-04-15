@@ -59,6 +59,14 @@
             </div>
             <div class="col col-lg-7 col-md-12 col-sm-12">
                 <br />
+                <div class="row">
+                    <div class="col">
+                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-primary btn-block" OnClick="btn_exportMonth_Click" />
+                    </div>
+                    <div class="col">
+                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-primary btn-block" OnClick="btn_exportDay_Click" Enabled="False" Visible="False" />
+                    </div>
+                </div>
                 <asp:Label ID="lbl_error" runat="server" Text="Label" CssClass="test-danger"></asp:Label>
             </div>
         </div>
