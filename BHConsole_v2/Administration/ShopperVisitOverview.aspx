@@ -7,46 +7,42 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <br />
-        <h3>Shopper Visit Overview</h3>
+        <h2>Shopper Visit Overview</h2>
         <hr />
-        <div class="alert alert-dismissible alert-info">
-            <%--<strong>Hello!</strong> This is an example placeholder, maybe information could be displayed based on certain criteria, or links displayed like <a href="#" class="alert-link">this one here</a>.--%>
-            
-            <div class="row">
-                <div class="col col-lg-6 col-md-12">
-                    <asp:Label ID="lbl_datetimeShopper" runat="server" Text="" Font-Size="XX-Large"></asp:Label>
-                </div>
-                <div class="col col-lg-6 col-md-12">
-                    <asp:FormView ID="ChildrenServedFormView" runat="server" CssClass="container-fluid" DataSourceID="ChildrenServedDataSource">
-                        <EditItemTemplate>
-                            ChildrenServed:
-                            <asp:TextBox ID="ChildrenServedTextBox" runat="server" Text='<%# Bind("ChildrenServed") %>' />
-                            <br />
-                            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
-                            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            ChildrenServed:
-                            <asp:TextBox ID="ChildrenServedTextBox" runat="server" Text='<%# Bind("ChildrenServed") %>' />
-                            <br />
-                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text="Children Served: " Font-Size="XX-Large"></asp:Label>
-                            <asp:Label ID="ChildrenServedLabel" runat="server" Text='<%# Bind("ChildrenServed") %>' Font-Size="XX-Large"/>
-                            <br />
+        <div class="row">
+            <div class="col col-lg-6 col-md-12">
+                <asp:Label ID="lbl_datetimeShopper" runat="server" Text="" Font-Size="XX-Large" CssClass="text-info"></asp:Label>
+            </div>
+            <div class="col col-lg-6 col-md-12">
+                <asp:FormView ID="ChildrenServedFormView" runat="server" CssClass="container-fluid" DataSourceID="ChildrenServedDataSource">
+                    <EditItemTemplate>
+                        ChildrenServed:
+                        <asp:TextBox ID="ChildrenServedTextBox" runat="server" Text='<%# Bind("ChildrenServed") %>' />
+                        <br />
+                        <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                        &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        ChildrenServed:
+                        <asp:TextBox ID="ChildrenServedTextBox" runat="server" Text='<%# Bind("ChildrenServed") %>' />
+                        <br />
+                        <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                        &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text="Children Served: " Font-Size="XX-Large" CssClass="text-info"></asp:Label>
+                        <asp:Label ID="ChildrenServedLabel" runat="server" Text='<%# Bind("ChildrenServed") %>' Font-Size="XX-Large"/>
+                        <br />
 
-                        </ItemTemplate>
-                    </asp:FormView>
-                    <asp:SqlDataSource ID="ChildrenServedDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectChildrenServedDay" SelectCommandType="StoredProcedure">
-                        <SelectParameters>
-                            <asp:SessionParameter Name="Day" SessionField="Day" Type="Int32" />
-                            <asp:SessionParameter Name="Month" SessionField="Month" Type="Int32" />
-                            <asp:SessionParameter Name="Year" SessionField="Year" Type="Int32" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                </div>
+                    </ItemTemplate>
+                </asp:FormView>
+                <asp:SqlDataSource ID="ChildrenServedDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectChildrenServedDay" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="Day" SessionField="Day" Type="Int32" />
+                        <asp:SessionParameter Name="Month" SessionField="Month" Type="Int32" />
+                        <asp:SessionParameter Name="Year" SessionField="Year" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </div>
         </div>
         <hr />
@@ -61,10 +57,10 @@
                 <br />
                 <div class="row">
                     <div class="col">
-                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-primary btn-block " OnClick="btn_exportMonth_Click" />
+                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-info btn-block " OnClick="btn_exportMonth_Click" />
                     </div>
                     <div class="col">
-                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-primary btn-block" OnClick="btn_exportDay_Click" />
+                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-info btn-block" OnClick="btn_exportDay_Click" />
                     </div>
                 </div>
                 
@@ -74,12 +70,14 @@
         <div class="row">
             <div class="col col-lg-6 col-md-12 col-sm-12">
                 <br />
-                <asp:GridView ID="VisitGridView" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="Id,ShopperId" DataSourceID="VisitDataSource" GridLines="None" EmptyDataText="No visits" ShowHeaderWhenEmpty="true">
+                <asp:GridView ID="VisitGridView" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="Id,ShopperId" DataSourceID="VisitDataSource" GridLines="None" EmptyDataText="No visits" ShowHeaderWhenEmpty="True">
                     <Columns>
                         <asp:BoundField DataField="Timestamp" DataFormatString="{0:m}" HeaderText="Date" SortExpression="Timestamp" />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="NumberOfChildren" HeaderText="Children" SortExpression="NumberOfChildren" />
-                        <asp:CommandField ShowSelectButton="True" />
+                        <asp:CommandField ShowSelectButton="True" >
+                        <ControlStyle CssClass="text-success" />
+                        </asp:CommandField>
                     </Columns>
                     <HeaderStyle CssClass="table-info" />
                     <RowStyle CssClass="table-light" />

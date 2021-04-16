@@ -108,7 +108,7 @@ namespace BHConsole_v2.Administration
                                 {
                                     Response.Clear();
                                     Response.ContentType = "application/octet-stream";
-                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches.csv");
+                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches" + "-" + Session["Year"].ToString() + "-" + Session["Month"].ToString() + ".csv");
                                     Response.TransmitFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
                                     Response.End();
                                     file.Delete();
@@ -160,7 +160,7 @@ namespace BHConsole_v2.Administration
                                 {
                                     Response.Clear();
                                     Response.ContentType = "application/octet-stream";
-                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches.csv");
+                                    Response.AppendHeader("Content-Disposition", "filename=VolunteerTimepunches" + "-" + Session["Year"].ToString() + "-" + Session["Month"].ToString() + "-" + Session["Day"].ToString() + ".csv");
                                     Response.TransmitFile(Server.MapPath("~/Data/VolunteerTimepunches.csv"));
                                     Response.End();
                                     file.Delete();

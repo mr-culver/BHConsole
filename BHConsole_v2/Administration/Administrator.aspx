@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <br />
-        <h3>Admin Dashboard</h3>
+        <h2>Administrator Dashboard</h2>
         <asp:Label ID="lbl_time" runat="server" Text="" Visible="False"></asp:Label>
         <hr />
         <div class="row">
@@ -19,7 +19,6 @@
                                 <asp:BoundField DataField="TimeIn" HeaderText="Time In" SortExpression="TimeIn" DataFormatString="{0:g}" />
                                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                 <asp:BoundField DataField="Shift Length" HeaderText="Shift" ReadOnly="True" SortExpression="Shift Length" />
-                                <asp:CommandField ShowDeleteButton="True" />
                             </Columns>
                             <HeaderStyle CssClass="table-primary" />
                             <RowStyle CssClass="table-light" />
@@ -59,40 +58,43 @@
             </div>
             <div class="col">
                 <div class="card border-success mb-3">
-                    <div class="card-header">Shoppers</div>
+                    <div class="card-header">Shoppers Today: <asp:Label ID="lbl_shoppers" runat="server" Text=""></asp:Label></div>
                     <div class="card-body">
                         <asp:ListView ID="ListView1" runat="server" DataSourceID="ShopperVisitDataSource">
                             <AlternatingItemTemplate>
-                                <span style="">Date:
-                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date") %>' />
+                                <span style="">
+                                <strong>Time: </strong>
+                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date", "{0:t}") %>' />
                                 <br />
-                                Name:
+                                <strong>Name: </strong>
                                 <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                                 <br />
-                                Email:
+                                <strong>Email: </strong>
                                 <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
                                 <br />
-                                Phone:
+                                <strong>Phone :</strong>
                                 <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
                                 <br />
-                                Address:
+                                <strong>Address: </strong>
                                 <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
                                 <br />
-                                <asp:CheckBox ID="First_VisitCheckBox" runat="server" Checked='<%# Eval("[First Visit]") %>' Enabled="false" Text="First Visit" />
+                                <strong>First Visit: </strong>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("[First Visit]") %>' />
                                 <br />
-                                Children:
+                                <strong>Children: </strong>
                                 <asp:Label ID="ChildrenLabel" runat="server" Text='<%# Eval("Children") %>' />
                                 <br />
-                                Case Worker:
+                                <strong>Case Worker: </strong>
                                 <asp:Label ID="Case_WorkerLabel" runat="server" Text='<%# Eval("[Case Worker]") %>' />
                                 <br />
-                                Relation:
+                                <strong>Relation: </strong>
                                 <asp:Label ID="RelationLabel" runat="server" Text='<%# Eval("Relation") %>' />
                                 <br />
-                                Description:
+                                <strong>Description: </strong>
                                 <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                                 <br />
-<br /></span>
+                                <br />
+                                </span>
                             </AlternatingItemTemplate>
                             <EditItemTemplate>
                                 <span style="">Date:
@@ -158,36 +160,39 @@
                                 <br /><br /></span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <span style="">Date:
-                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date") %>' />
+                                <span style="">
+                                <strong>Time: </strong>
+                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date", "{0:t}") %>' />
                                 <br />
-                                Name:
+                                <strong>Name: </strong>
                                 <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                                 <br />
-                                Email:
+                                <strong>Email: </strong>
                                 <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
                                 <br />
-                                Phone:
+                                <strong>Phone :</strong>
                                 <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
                                 <br />
-                                Address:
+                                <strong>Address: </strong>
                                 <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
                                 <br />
-                                <asp:CheckBox ID="First_VisitCheckBox" runat="server" Checked='<%# Eval("[First Visit]") %>' Enabled="false" Text="First Visit" />
+                                <strong>First Visit: </strong>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("[First Visit]") %>' />
                                 <br />
-                                Children:
+                                <strong>Children: </strong>
                                 <asp:Label ID="ChildrenLabel" runat="server" Text='<%# Eval("Children") %>' />
                                 <br />
-                                Case Worker:
+                                <strong>Case Worker: </strong>
                                 <asp:Label ID="Case_WorkerLabel" runat="server" Text='<%# Eval("[Case Worker]") %>' />
                                 <br />
-                                Relation:
+                                <strong>Relation: </strong>
                                 <asp:Label ID="RelationLabel" runat="server" Text='<%# Eval("Relation") %>' />
                                 <br />
-                                Description:
+                                <strong>Description: </strong>
                                 <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                                 <br />
-<br /></span>
+                                <br />
+                                </span>
                             </ItemTemplate>
                             <LayoutTemplate>
                                 <div id="itemPlaceholderContainer" runat="server" style="">
@@ -195,10 +200,11 @@
                                 </div>
                                 <div style="">
                                     <asp:DataPager ID="DataPager1" runat="server">
+                                        
                                         <Fields>
-                                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="False" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                             <asp:NumericPagerField />
-                                            <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                            <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="False" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                         </Fields>
                                     </asp:DataPager>
                                 </div>
@@ -250,7 +256,7 @@
         <div class="row">
             <div class="col">
                 <%--Tabs--%>
-                <ul class="nav nav-tabs">
+                <%--<ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
                     </li>
@@ -265,7 +271,7 @@
                     <div class="tab-pane fade" id="profile">
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>

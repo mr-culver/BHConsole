@@ -15,13 +15,12 @@ namespace BHConsole_v2.Administration
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_time.Text = System.DateTime.Now.ToString();
-            if (Session["Year"] == null || Session["Year"].Equals(""))
-            {
-                Session["Year"] = System.DateTime.Now.Year.ToString();
-                Session["Month"] = System.DateTime.Now.Month.ToString();
-                Session["Day"] = System.DateTime.Now.Day.ToString();
-            }
+            Session["Year"] = System.DateTime.Now.Year.ToString();
+            Session["Month"] = System.DateTime.Now.Month.ToString();
+            Session["Day"] = System.DateTime.Now.Day.ToString();
             ClockedInGridview.DataBind();
+            dd_clockedin.DataBind();
+            lbl_shoppers.Text = GetNumberOfVisitsToday();
         }
 
         protected void btn_clockout_Click(object sender, EventArgs e)
@@ -33,9 +32,29 @@ namespace BHConsole_v2.Administration
                 ClockedInGridview.DataBind();
                 ClockedInDataSource.DataBind();
                 dd_clockedin.SelectedValue = null;
-                //Session["VolunteerToThank"] = dd_clockedin.SelectedItem.ToString();
-                /*Session["VolunteerToThank"] = dd_clockedin.SelectedValue.ToString();*/ // TODO: Add thank you page
-                /*Response.Redirect("~/Default.aspx");*/ // Will redirect to thank you page
+            }
+        }
+
+        private string GetNumberOfVisitsToday()
+        {
+            string sql = "SELECT COUNT([Id]) AS Vists FROM [Visit] WHERE MONTH([Visit].[Timestamp]) = @Month AND DAY([Visit].[Timestamp]) = @Day AND YEAR([Visit].[Timestamp]) = @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Month", DateTime.Now.Month);
+                    cmd.Parameters.AddWithValue("@Year", DateTime.Now.Year);
+                    cmd.Parameters.AddWithValue("@Day", DateTime.Now.Day);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        throw exc;
+                    }
+                }
             }
         }
     }

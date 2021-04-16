@@ -7,49 +7,47 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container" >
         <br />
-        <h3>Volunteer Overview</h3>
+        <h2>Volunteer Overview</h2>
         <hr />
-        <div class="alert alert-dismissible alert-info">
             <%--<strong>Hello!</strong> This is an example placeholder, maybe information could be displayed based on certain criteria, or links displayed like <a href="#" class="alert-link">this one here</a>.--%>
-            <div class="row">
-                <div class="col col-lg-6 col-md-12">
-                    <asp:Label ID="lbl_datetimeVolunteer" runat="server" Text="" Font-Size="XX-Large"></asp:Label>
-                </div>
-                <div class="col col-lg-6 col-md-12">
-                    <%--<asp:Label ID="lbl_volunteerHours" runat="server" Text="" Font-Size="XX-Large"></asp:Label>--%>
-                    <asp:FormView ID="FormView1" runat="server" DataSourceID="VolunteerHoursDataSource" CssClass="container-fluid">
-                        <EditItemTemplate>
-                            MonthHours:
-                            <asp:TextBox ID="MonthHoursTextBox" runat="server" Text='<%# Bind("MonthHours") %>' />
-                            <br />
-                            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
-                            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            MonthHours:
-                            <asp:TextBox ID="MonthHoursTextBox" runat="server" Text='<%# Bind("MonthHours") %>' />
-                            <br />
-                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text="Volunteer Hours: " Font-Size="XX-Large"></asp:Label>
-                            <asp:Label ID="MonthHoursLabel" runat="server" Text='<%# Bind("MonthHours") %>' Font-Size="XX-Large" />
-                            <br />
-
-                        </ItemTemplate>
-                    </asp:FormView>
-                    <asp:SqlDataSource ID="VolunteerHoursDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectVolunteerHours" SelectCommandType="StoredProcedure">
-                        <SelectParameters>
-                            <asp:SessionParameter Name="Month" SessionField="Month" Type="Int32" />
-                            <asp:SessionParameter Name="Year" SessionField="Year" Type="Int32" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                </div>
+        <div class="row">
+            <div class="col col-lg-5 col-md-12">
+                <asp:Label ID="lbl_datetimeVolunteer" runat="server" Text="" Font-Size="XX-Large" CssClass="text-info"></asp:Label>
             </div>
-            
+            <div class="col col-lg-7 col-md-12">
+                <%--<asp:Label ID="lbl_volunteerHours" runat="server" Text="" Font-Size="XX-Large"></asp:Label>--%>
+                <asp:FormView ID="FormView1" runat="server" DataSourceID="VolunteerHoursDataSource" CssClass="container-fluid">
+                    <EditItemTemplate>
+                        MonthHours:
+                        <asp:TextBox ID="MonthHoursTextBox" runat="server" Text='<%# Bind("MonthHours") %>' />
+                        <br />
+                        <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                        &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        MonthHours:
+                        <asp:TextBox ID="MonthHoursTextBox" runat="server" Text='<%# Bind("MonthHours") %>' />
+                        <br />
+                        <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                        &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text="Volunteer Hours: " Font-Size="XX-Large" CssClass="text-info"></asp:Label>
+                        <asp:Label ID="MonthHoursLabel" runat="server" Text='<%# Bind("MonthHours") %>' Font-Size="XX-Large" />
+                        <br />
+
+                    </ItemTemplate>
+                </asp:FormView>
+                <asp:SqlDataSource ID="VolunteerHoursDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectVolunteerHours" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="Month" SessionField="Month" Type="Int32" />
+                        <asp:SessionParameter Name="Year" SessionField="Year" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </div>
         </div>
-        <hr />
+            
+        <br />
         <div class="row">
             <div class="col col-lg-5 col-md-12 col-sm-12">
                 <asp:Label ID="lbl_volunteerMonthYear" runat="server" Text="Change Date" CssClass="text-body" ></asp:Label>
@@ -61,10 +59,10 @@
                 <br />
                 <div class="row">
                     <div class="col">
-                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-primary btn-block" OnClick="btn_exportMonth_Click" />
+                        <asp:Button ID="btn_exportMonth" runat="server" Text="Export Month" CssClass="btn btn-info btn-block" OnClick="btn_exportMonth_Click" />
                     </div>
                     <div class="col">
-                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-primary btn-block" OnClick="btn_exportDay_Click" Enabled="False" Visible="False" />
+                        <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-info btn-block" OnClick="btn_exportDay_Click" Enabled="False" Visible="False" />
                     </div>
                 </div>
                 <asp:Label ID="lbl_error" runat="server" Text="Label" CssClass="test-danger"></asp:Label>
@@ -78,7 +76,9 @@
                         <asp:BoundField DataField="TimeIn" HeaderText="Date" SortExpression="TimeIn" DataFormatString="{0:m}"  />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Hours" HeaderText="Hours" ReadOnly="True" SortExpression="Hours" />
-                        <asp:CommandField ShowSelectButton="True" />
+                        <asp:CommandField ShowSelectButton="True" >
+                        <ControlStyle CssClass="text-success" />
+                        </asp:CommandField>
                     </Columns>
                     <HeaderStyle CssClass="table-info"></HeaderStyle>
                     <RowStyle CssClass="table-light"></RowStyle>
@@ -101,7 +101,7 @@
                 <div class="card border-info mb-2">
                     <div class="card-header">Detail View</div>
                     <div class="card-body">
-                        <asp:FormView ID="VolunteerOverviewFormView" runat="server" DataKeyNames="Id" DataSourceID="VolunteerOverviewDetailDataSource" EmptyDataText="Nothing has been selected">
+                        <asp:FormView ID="VolunteerOverviewFormView" runat="server" DataKeyNames="Id" DataSourceID="VolunteerOverviewDetailDataSource" EmptyDataText="Nothing has been selected" CssClass="container-fluid">
                             <EditItemTemplate>
                                 Name:
                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>'  CssClass="form-control"/>
@@ -164,6 +164,7 @@
                                 <br />
                                 Hours:
                                 <asp:Label ID="HoursLabel" runat="server" Text='<%# Bind("Hours") %>' />
+                                <br />
                                 <br />
                                 <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
                                 &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
