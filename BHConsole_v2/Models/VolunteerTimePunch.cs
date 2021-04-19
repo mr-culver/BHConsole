@@ -75,10 +75,9 @@ namespace BHConsole.Models
             }
         }
 
-        public static int TotalVolunteerHours(int month, int year)
+        public static string GetVolunteersMonth(string month, string year)
         {
-            int total;
-            string sql = "EXEC SelectVolunteerHours @Month, @Year";
+            string sql = "SELECT COUNT(Id) FROM [VolunteerTimepunch] WHERE MONTH([TimeIn]) = @Month AND YEAR([TimeIn]) = @Year";
             using (SqlConnection conn = Connection.GetConnection())
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -88,16 +87,64 @@ namespace BHConsole.Models
                     try
                     {
                         conn.Open();
-                        var v = cmd.ExecuteScalar();
-                        if (v == null)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            total = Convert.ToInt32(v);
-                            return total;
-                        }
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+        public static string GetVolunteerHoursMonth(string month, string year)
+        {
+            string sql = "EXEC SelectVolunteerHoursMonth @Month, @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+        public static string GetVolunteerHoursDay(string day, string month, string year)
+        {
+            string sql = "EXEC SelectVolunteerHoursDay @Day, @Month, @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("Day", day);
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
                     }
                     finally
                     {

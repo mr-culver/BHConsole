@@ -16,24 +16,25 @@ namespace BHConsole_v2.Administration
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_error.Text = "";
-            SetTimeLabels();
+            SetLabels();
             //lbl_volunteerHours.Text = VolunteerTimepunch.TotalVolunteerHours(Convert.ToInt32(Session["Month"]), Convert.ToInt32(Session["Year"])).ToString();
             VolunteerOverviewGridView.DataBind();
-            FormView1.DataBind();
         }
         protected void txt_volunteerMonthYear_TextChanged(object sender, EventArgs e)
         {
-            var parameter = VolunteerOverviewDataSource.SelectParameters;
-            parameter["Month"].DefaultValue = System.DateTime.Parse(txt_volunteerMonthYear.Text).Month.ToString();
-            parameter["Year"].DefaultValue = System.DateTime.Parse(txt_volunteerMonthYear.Text).Year.ToString();
+            //var parameter = VolunteerOverviewDataSource.SelectParameters;
+            //parameter["Day"].DefaultValue = System.DateTime.Parse(txt_volunteerMonthYear.Text).Day.ToString();
+            //parameter["Month"].DefaultValue = System.DateTime.Parse(txt_volunteerMonthYear.Text).Month.ToString();
+            //parameter["Year"].DefaultValue = System.DateTime.Parse(txt_volunteerMonthYear.Text).Year.ToString();
             try
             {
                 DataSourceSelectArguments arg = new DataSourceSelectArguments();
                 VolunteerOverviewDataSource.Select(arg);
                 VolunteerOverviewDataSource.DataBind();
+                Session["Day"] = System.DateTime.Parse(txt_volunteerMonthYear.Text).Day.ToString();
                 Session["Year"] = System.DateTime.Parse(txt_volunteerMonthYear.Text).Year.ToString();
                 Session["Month"] = System.DateTime.Parse(txt_volunteerMonthYear.Text).Month.ToString();
-                SetTimeLabels();
+                SetLabels();
                 //lbl_volunteerHours.Text = VolunteerTimepunch.TotalVolunteerHours((int)Session["Month"], (int)Session["Year"]).ToString();
             }
             catch (Exception exc)
@@ -41,7 +42,7 @@ namespace BHConsole_v2.Administration
                 lbl_error.Text = exc.Message;
             }
         }
-        private void SetTimeLabels()
+        private void SetLabels()
         {
             if (Session["Year"] == null || Session["Year"].Equals(""))
             {
@@ -51,7 +52,9 @@ namespace BHConsole_v2.Administration
                 Session["Day"] = System.DateTime.Now.Day.ToString();
             }
             DateTime dateTime = new DateTime(Convert.ToInt32((string)Session["Year"]), Convert.ToInt32((string)Session["Month"]), Convert.ToInt32((string)Session["Day"]));
-            lbl_datetimeVolunteer.Text = dateTime.ToString("y");
+            lbl_datetimeVolunteer.Text = dateTime.ToString("D");
+            lbl_volunteerHoursDay.Text = VolunteerTimepunch.GetVolunteerHoursDay(Session["Day"].ToString(), Session["Month"].ToString(), Session["Year"].ToString());
+            lbl_volunteerHoursMonth.Text = VolunteerTimepunch.GetVolunteerHoursMonth(Session["Month"].ToString(), Session["Year"].ToString());
         }
 
         protected void VolunteerOverviewDetailDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
@@ -71,7 +74,7 @@ namespace BHConsole_v2.Administration
 
         protected void btn_exportDay_Click(object sender, EventArgs e)
         {
-
+            DownloadVolunteerTimepunchesDay(new DateTime(Convert.ToInt32((string)Session["Year"]), Convert.ToInt32((string)Session["Month"]), Convert.ToInt32((string)Session["Day"])));
         }
 
         private void DownloadVolunteerTimepunchesMonth(DateTime date)
@@ -127,7 +130,7 @@ namespace BHConsole_v2.Administration
 
         private void DownloadVolunteerTimepunchesDay(DateTime date)
         {
-            string sql = "EXEC SelectVolunteerShifts @Day, @Month, @Year";
+            string sql = "EXEC SelectVolunteerShiftsDay @Day, @Month, @Year";
             var myExport = new CsvExport();
             using (SqlConnection conn = Connection.GetConnection())
             {
@@ -175,6 +178,21 @@ namespace BHConsole_v2.Administration
                     }
                 }
             }
+        }
+
+        protected void VolunteerOverviewFormView_ItemDeleted(object sender, FormViewDeletedEventArgs e)
+        {
+            VolunteerOverviewGridView.DataBind();
+        }
+
+        protected void VolunteerOverviewFormView_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            VolunteerOverviewGridView.DataBind();
+        }
+
+        protected void VolunteerOverviewFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
+        {
+            VolunteerOverviewGridView.DataBind();
         }
     }
 }

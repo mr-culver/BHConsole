@@ -15,17 +15,18 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetTimeLabels();
+            SetLabels();
             lbl_error.Text = "";
             VisitGridView.DataBind();
-            ChildrenServedFormView.DataBind();
+            MonthVisitGridView.DataBind();
+            //ChildrenServedFormView.DataBind();
         }
         protected void txt_shopperMonthYear_TextChanged(object sender, EventArgs e)
         {
-            var parameter = VisitDataSource.SelectParameters;
-            parameter["Day"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Day.ToString();
-            parameter["Month"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Month.ToString();
-            parameter["Year"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Year.ToString();
+            //var parameter = VisitDataSource.SelectParameters;
+            //parameter["Day"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Day.ToString();
+            //parameter["Month"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Month.ToString();
+            //parameter["Year"].DefaultValue = System.DateTime.Parse(txt_shopperMonthYear.Text).Year.ToString();
             try
             {
                 DataSourceSelectArguments arg = new DataSourceSelectArguments();
@@ -34,14 +35,14 @@ namespace BHConsole_v2.Administration
                 Session["Year"] = System.DateTime.Parse(txt_shopperMonthYear.Text).Year.ToString();
                 Session["Month"] = System.DateTime.Parse(txt_shopperMonthYear.Text).Month.ToString();
                 Session["Day"] = System.DateTime.Parse(txt_shopperMonthYear.Text).Day.ToString();
-                SetTimeLabels();
+                SetLabels();
             }
             catch (Exception exc)
             {
                 lbl_error.Text = exc.Message;
             }
         }
-        private void SetTimeLabels()
+        private void SetLabels()
         {
             if (Session["Year"] == null || Session["Year"].Equals(""))
             {
@@ -52,8 +53,8 @@ namespace BHConsole_v2.Administration
             }
             DateTime dateTime = new DateTime(Convert.ToInt32((string)Session["Year"]), Convert.ToInt32((string)Session["Month"]), Convert.ToInt32((string)Session["Day"]));
             lbl_datetimeShopper.Text = dateTime.ToString("D");
-            //monthYear += Session["Year"].ToString();
-            //lbl_datetimeVolunteer.Text = monthYear;
+            lbl_childrenServedDay.Text = ShopperVisit.GetChildrenServedDay((string)Session["Day"], (string)Session["Month"], (string)Session["Year"]);
+            lbl_childrenServedMonth.Text = ShopperVisit.GetChildrenServedMonth((string)Session["Month"], (string)Session["Year"]);
         }
 
         protected void btn_exportMonth_Click(object sender, EventArgs e)
@@ -176,6 +177,24 @@ namespace BHConsole_v2.Administration
                     }
                 }
             }
+        }
+
+        protected void VisitDetailsFormView_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            VisitGridView.DataBind();
+            //ChildrenServedFormView.DataBind();
+        }
+
+        protected void VisitDetailsFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
+        {
+            VisitGridView.DataBind();
+            //ChildrenServedFormView.DataBind();
+        }
+
+        protected void VisitDetailsFormView_ItemDeleted(object sender, FormViewDeletedEventArgs e)
+        {
+            VisitGridView.DataBind();
+            //ChildrenServedFormView.DataBind();
         }
     }
 }

@@ -14,10 +14,12 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             lbl_time.Text = System.DateTime.Now.ToString();
             Session["Year"] = System.DateTime.Now.Year.ToString();
             Session["Month"] = System.DateTime.Now.Month.ToString();
             Session["Day"] = System.DateTime.Now.Day.ToString();
+            SetLabels();
             ClockedInGridview.DataBind();
             dd_clockedin.DataBind();
             lbl_shoppers.Text = GetNumberOfVisitsToday();
@@ -33,6 +35,14 @@ namespace BHConsole_v2.Administration
                 ClockedInDataSource.DataBind();
                 dd_clockedin.SelectedValue = null;
             }
+        }
+
+        private void SetLabels()
+        {
+            lbl_shoppersMonth.Text = ShopperVisit.GetShopperVistsMonth(Session["Month"].ToString(), Session["Year"].ToString());
+            lbl_childrenMonth.Text = ShopperVisit.GetChildrenServedMonth(Session["Month"].ToString(), Session["Year"].ToString());
+            lbl_volunteersMonth.Text = VolunteerTimepunch.GetVolunteersMonth(Session["Month"].ToString(), Session["Year"].ToString());
+            lbl_volunteerHours.Text = VolunteerTimepunch.GetVolunteerHoursMonth(Session["Month"].ToString(), Session["Year"].ToString());
         }
 
         private string GetNumberOfVisitsToday()

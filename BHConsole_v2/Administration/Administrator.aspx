@@ -6,13 +6,30 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <br />
-        <h2>Administrator Dashboard</h2>
+        <h2 class="display-4">Administrator Dashboard</h2>
         <asp:Label ID="lbl_time" runat="server" Text="" Visible="False"></asp:Label>
         <hr />
         <div class="row">
             <div class="col">
+                <h2>General Overview</h2>
+                <asp:Label ID="Label11" CssClass="h5" runat="server" Text="Shoppers this month: "></asp:Label>
+                <asp:Label ID="lbl_shoppersMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
+                <br />
+                <asp:Label ID="Label12" CssClass="h5" runat="server" Text="Children served this month: "></asp:Label>
+                <asp:Label ID="lbl_childrenMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
+                <br />
+                <asp:Label ID="Label13" CssClass="h5" runat="server" Text="Volunteers this month: "></asp:Label>
+                <asp:Label ID="lbl_volunteersMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
+                <br />
+                <asp:Label ID="Label14" CssClass="h5" runat="server" Text="Volunteer hours: "></asp:Label>
+                <asp:Label ID="lbl_volunteerHours" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
                 <div class="card border-primary mb-3">
-                    <div class="card-header">Clocked In</div>
+                    <div class="card-header">Clocked In Volunteers</div>
                     <div class="card-body">
                         <asp:GridView ID="ClockedInGridview" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="Id" DataSourceID="ClockedInDataSource" GridLines="None" EmptyDataText="No records to display" ShowHeaderWhenEmpty="True">
                             <Columns>
@@ -47,8 +64,6 @@
                         <br />
                         <div class="form-group">
                             <asp:DropDownList ID="dd_clockedin" CssClass="form-control" runat="server" DataSourceID="ClockedInDataSource" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
-                            <%--<asp:SqlDataSource ID="" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [VolunteerTimepunch] WHERE ([TimeOut] IS NULL) ORDER BY [TimeIn]">--%>    
-                            <%--</asp:SqlDataSource>--%>
                         </div>
                         <div class="form-group">
                             <asp:Button ID="btn_clockout" class="btn btn-primary btn-lg btn-block" runat="server" Text="Clock Out" OnClick="btn_clockout_Click" OnClientClick="return confirm('Are you sure you want to clock out?')" />
@@ -60,188 +75,40 @@
                 <div class="card border-success mb-3">
                     <div class="card-header">Shoppers Today: <asp:Label ID="lbl_shoppers" runat="server" Text=""></asp:Label></div>
                     <div class="card-body">
-                        <asp:ListView ID="ListView1" runat="server" DataSourceID="ShopperVisitDataSource">
-                            <AlternatingItemTemplate>
-                                <span style="">
-                                <strong>Time: </strong>
-                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date", "{0:t}") %>' />
-                                <br />
-                                <strong>Name: </strong>
-                                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                                <br />
-                                <strong>Email: </strong>
-                                <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                                <br />
-                                <strong>Phone :</strong>
-                                <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
-                                <br />
-                                <strong>Address: </strong>
-                                <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
-                                <br />
-                                <strong>First Visit: </strong>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("[First Visit]") %>' />
-                                <br />
-                                <strong>Children: </strong>
-                                <asp:Label ID="ChildrenLabel" runat="server" Text='<%# Eval("Children") %>' />
-                                <br />
-                                <strong>Case Worker: </strong>
-                                <asp:Label ID="Case_WorkerLabel" runat="server" Text='<%# Eval("[Case Worker]") %>' />
-                                <br />
-                                <strong>Relation: </strong>
-                                <asp:Label ID="RelationLabel" runat="server" Text='<%# Eval("Relation") %>' />
-                                <br />
-                                <strong>Description: </strong>
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-                                <br />
-                                </span>
-                            </AlternatingItemTemplate>
-                            <EditItemTemplate>
-                                <span style="">Date:
-                                <asp:TextBox ID="DateTextBox" runat="server" Text='<%# Bind("Date") %>' />
-                                <br />
-                                Name:
-                                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                                <br />
-                                Email:
-                                <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                                <br />
-                                Phone:
-                                <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                                <br />
-                                Address:
-                                <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
-                                <br />
-                                <asp:CheckBox ID="First_VisitCheckBox" runat="server" Checked='<%# Bind("[First Visit]") %>' Text="First Visit" />
-                                <br />
-                                Children:
-                                <asp:TextBox ID="ChildrenTextBox" runat="server" Text='<%# Bind("Children") %>' />
-                                <br />
-                                Case Worker:
-                                <asp:TextBox ID="Case_WorkerTextBox" runat="server" Text='<%# Bind("[Case Worker]") %>' />
-                                <br />
-                                Relation:
-                                <asp:TextBox ID="RelationTextBox" runat="server" Text='<%# Bind("Relation") %>' />
-                                <br />
-                                Description:
-                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                                <br />
-                                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                                <br /><br /></span>
-                            </EditItemTemplate>
-                            <EmptyDataTemplate>
-                                <span>No data was returned.</span>
-                            </EmptyDataTemplate>
-                            <InsertItemTemplate>
-                                <span style="">Date:
-                                <asp:TextBox ID="DateTextBox" runat="server" Text='<%# Bind("Date") %>' />
-                                <br />Name:
-                                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                                <br />Email:
-                                <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                                <br />Phone:
-                                <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                                <br />Address:
-                                <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
-                                <br />
-                                <asp:CheckBox ID="First_VisitCheckBox" runat="server" Checked='<%# Bind("[First Visit]") %>' Text="First Visit" />
-                                <br />Children:
-                                <asp:TextBox ID="ChildrenTextBox" runat="server" Text='<%# Bind("Children") %>' />
-                                <br />Case Worker:
-                                <asp:TextBox ID="Case_WorkerTextBox" runat="server" Text='<%# Bind("[Case Worker]") %>' />
-                                <br />Relation:
-                                <asp:TextBox ID="RelationTextBox" runat="server" Text='<%# Bind("Relation") %>' />
-                                <br />Description:
-                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                                <br />
-                                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                                <br /><br /></span>
-                            </InsertItemTemplate>
+                        <asp:DataList ID="DataList1" runat="server" DataSourceID="ShopperVisitDataSource" CssClass="container-fluid">
                             <ItemTemplate>
-                                <span style="">
                                 <strong>Time: </strong>
-                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date", "{0:t}") %>' />
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Date", "{0:t}") %>'></asp:Label>
                                 <br />
                                 <strong>Name: </strong>
-                                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                 <br />
                                 <strong>Email: </strong>
-                                <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
                                 <br />
-                                <strong>Phone :</strong>
-                                <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
+                                <strong>Phone: </strong>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
                                 <br />
                                 <strong>Address: </strong>
-                                <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
+                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
                                 <br />
                                 <strong>First Visit: </strong>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("[First Visit]") %>' />
+                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("[First Visit]") %>'></asp:Label>
                                 <br />
                                 <strong>Children: </strong>
-                                <asp:Label ID="ChildrenLabel" runat="server" Text='<%# Eval("Children") %>' />
+                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("Children") %>'></asp:Label>
                                 <br />
                                 <strong>Case Worker: </strong>
-                                <asp:Label ID="Case_WorkerLabel" runat="server" Text='<%# Eval("[Case Worker]") %>' />
+                                <asp:Label ID="Label8" runat="server" Text='<%# Eval("[Case Worker]") %>'></asp:Label>
                                 <br />
-                                <strong>Relation: </strong>
-                                <asp:Label ID="RelationLabel" runat="server" Text='<%# Eval("Relation") %>' />
+                                <strong>Relationship: </strong>
+                                <asp:Label ID="Label9" runat="server" Text='<%# Eval("Relation") %>'></asp:Label>
                                 <br />
                                 <strong>Description: </strong>
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-                                <br />
-                                </span>
+                                <asp:Label ID="Label10" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
+                                <hr />
                             </ItemTemplate>
-                            <LayoutTemplate>
-                                <div id="itemPlaceholderContainer" runat="server" style="">
-                                    <span runat="server" id="itemPlaceholder" />
-                                </div>
-                                <div style="">
-                                    <asp:DataPager ID="DataPager1" runat="server">
-                                        
-                                        <Fields>
-                                            <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="False" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                            <asp:NumericPagerField />
-                                            <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="False" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                        </Fields>
-                                    </asp:DataPager>
-                                </div>
-                            </LayoutTemplate>
-                            <SelectedItemTemplate>
-                                <span style="">Date:
-                                <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date") %>' />
-                                <br />
-                                Name:
-                                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                                <br />
-                                Email:
-                                <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                                <br />
-                                Phone:
-                                <asp:Label ID="PhoneLabel" runat="server" Text='<%# Eval("Phone") %>' />
-                                <br />
-                                Address:
-                                <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
-                                <br />
-                                <asp:CheckBox ID="First_VisitCheckBox" runat="server" Checked='<%# Eval("[First Visit]") %>' Enabled="false" Text="First Visit" />
-                                <br />
-                                Children:
-                                <asp:Label ID="ChildrenLabel" runat="server" Text='<%# Eval("Children") %>' />
-                                <br />
-                                Case Worker:
-                                <asp:Label ID="Case_WorkerLabel" runat="server" Text='<%# Eval("[Case Worker]") %>' />
-                                <br />
-                                Relation:
-                                <asp:Label ID="RelationLabel" runat="server" Text='<%# Eval("Relation") %>' />
-                                <br />
-                                Description:
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-<br /></span>
-                            </SelectedItemTemplate>
-                        </asp:ListView>
+                        </asp:DataList>
                         <asp:SqlDataSource ID="ShopperVisitDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectShopperVisitsDay" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:SessionParameter Name="Day" SessionField="Day" Type="Int32" />

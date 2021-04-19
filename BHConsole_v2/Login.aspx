@@ -5,14 +5,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
+        <br />
         <div class="row">
-            <div class="col-2">
+            <div class="col col-lg-3 col-md-3 col-sm-2">
 
             </div>
-            <div class="col-8">
+            <div class="col col-lg-6 col-md-6 col-sm-8">
                 <div class="card border-primary">
                     <%--<div class="card-header">Login</div>--%>
                     <div class="card-body">
+                        <h4 class="text-center">Administrator Login</h4>
+                        <br />
                         <%--Form--%>
                         <asp:Label ID="lbl_result" runat="server" Text=""></asp:Label>
                         <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="text-danger" />--%>
@@ -34,8 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-
+            <div class="col col-lg-3 col-md-3 col-sm-2">
             </div>
             
         </div>

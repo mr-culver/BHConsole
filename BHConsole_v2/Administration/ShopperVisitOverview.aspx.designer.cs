@@ -24,22 +24,40 @@ namespace BHConsole_v2.Administration
         protected global::System.Web.UI.WebControls.Label lbl_datetimeShopper;
 
         /// <summary>
-        /// ChildrenServedFormView control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView ChildrenServedFormView;
+        protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// ChildrenServedDataSource control.
+        /// lbl_childrenServedDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ChildrenServedDataSource;
+        protected global::System.Web.UI.WebControls.Label lbl_childrenServedDay;
+
+        /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+
+        /// <summary>
+        /// lbl_childrenServedMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_childrenServedMonth;
 
         /// <summary>
         /// Label1 control.
@@ -121,5 +139,23 @@ namespace BHConsole_v2.Administration
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource VisitDetailsDataSource;
+
+        /// <summary>
+        /// MonthVisitGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView MonthVisitGridView;
+
+        /// <summary>
+        /// VisitMonthDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource VisitMonthDataSource;
     }
 }

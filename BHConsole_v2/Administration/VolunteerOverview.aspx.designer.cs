@@ -24,22 +24,40 @@ namespace BHConsole_v2.Administration
         protected global::System.Web.UI.WebControls.Label lbl_datetimeVolunteer;
 
         /// <summary>
-        /// FormView1 control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// VolunteerHoursDataSource control.
+        /// lbl_volunteerHoursDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource VolunteerHoursDataSource;
+        protected global::System.Web.UI.WebControls.Label lbl_volunteerHoursDay;
+
+        /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+
+        /// <summary>
+        /// lbl_volunteerHoursMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_volunteerHoursMonth;
 
         /// <summary>
         /// lbl_volunteerMonthYear control.
@@ -121,5 +139,23 @@ namespace BHConsole_v2.Administration
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource VolunteerOverviewDetailDataSource;
+
+        /// <summary>
+        /// VolunteerMonthGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView VolunteerMonthGridView;
+
+        /// <summary>
+        /// VolunteerMonthDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource VolunteerMonthDataSource;
     }
 }
