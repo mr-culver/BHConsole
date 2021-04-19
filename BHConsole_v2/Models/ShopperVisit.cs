@@ -64,5 +64,72 @@ namespace BHConsole.Models
                 }
             }
         }
+
+        public static string GetChildrenServedDay(string day, string month, string year)
+        {
+            string sql = "EXEC [SelectChildrenServedDay] @Day, @Month, @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Day", day);
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
+                    }
+                }
+            }
+        }
+
+        public static string GetChildrenServedMonth(string month, string year)
+        {
+            string sql = "EXEC [SelectChildrenServedMonth] @Month, @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
+                    }
+                }
+            }
+        }
+
+        public static string GetShopperVistsMonth(string month, string year)
+        {
+            string sql = "SELECT COUNT(Id) FROM [Visit] WHERE MONTH([Timestamp]) = @Month AND YEAR([Timestamp]) = @Year";
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    try
+                    {
+                        conn.Open();
+                        return cmd.ExecuteScalar().ToString();
+                    }
+                    catch (Exception exc)
+                    {
+                        return exc.Message;
+                    }
+                }
+            }
+        }
     }
 }

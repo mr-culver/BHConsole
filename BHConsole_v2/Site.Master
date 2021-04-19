@@ -42,9 +42,15 @@
             </div>
         </nav>
         <br />
-
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
+        <br />
+        <div class="container body-content">
+            <footer>
+                <hr />
+                <asp:Image ID="Image1" runat="server" CssClass="rounded mx-auto d-block" ImageUrl="~/Images/bhf-logo.png" />
+            </footer>
+        </div>
     </form>
 </body>
 </html>

@@ -13,11 +13,8 @@
                 <asp:LinkButton ID="lbtn_clockout" CssClass="btn btn-danger btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockout.aspx" Font-Size="XX-Large">Clock Out</asp:LinkButton>
             </div>
         </div>
-        <hr />
         <div class="row">
             <div class="col">
-                <h4>Currently Volunteering</h4>
-                <asp:GridView ID="VolunteerSimpleGridView" runat="server" EmptyDataText="No one is currently clocked in."></asp:GridView>
             </div>
         </div>
     </div>

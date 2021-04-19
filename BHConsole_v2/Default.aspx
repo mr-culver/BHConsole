@@ -60,10 +60,11 @@
                     <div class="card border-secondary mb-3" draggable="false">
                             <div class="card-header">Fundraising Events</div>
                         <div class="card-body">
+                            <h5 class="card-title">This year's event</h5>
                             <p class="card-text">
-                                Placeholder for new event coming for 2021
+                                Info still being determined!
                             </p>
-                            <h5 class="card-title">Last year's event...</h5>
+                            <h5 class="card-title">Last year's event</h5>
                             <%--<h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>--%>
                             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/pancake_breakfast.png" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice"/>
                         </div>

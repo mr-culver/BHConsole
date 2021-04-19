@@ -78,8 +78,6 @@
     <Content Include="Administration\Administrator.aspx" />
     <Content Include="Administration\Export.aspx" />
     <Content Include="Administration\ShopperVisitOverview.aspx" />
-    <Content Include="Administration\ShopperOverview.aspx" />
-    <Content Include="Administration\VolunteerClockedin.aspx" />
     <Content Include="Administration\VolunteerOverview.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -235,20 +233,6 @@
     </Compile>
     <Compile Include="Administration\ShopperVisitOverview.aspx.designer.cs">
       <DependentUpon>ShopperVisitOverview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\ShopperOverview.aspx.cs">
-      <DependentUpon>ShopperOverview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\ShopperOverview.aspx.designer.cs">
-      <DependentUpon>ShopperOverview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\VolunteerClockedin.aspx.cs">
-      <DependentUpon>VolunteerClockedin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\VolunteerClockedin.aspx.designer.cs">
-      <DependentUpon>VolunteerClockedin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\VolunteerOverview.aspx.cs">
       <DependentUpon>VolunteerOverview.aspx</DependentUpon>
