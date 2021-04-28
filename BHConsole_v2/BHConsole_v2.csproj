@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administration\Administrator.aspx" />
-    <Content Include="Administration\Export.aspx" />
     <Content Include="Administration\ShopperVisitOverview.aspx" />
     <Content Include="Administration\VolunteerOverview.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -92,6 +91,7 @@
     <Content Include="Images\balloonsjyslogo.jpg" />
     <Content Include="Images\bhdonateqr.jpeg" />
     <Content Include="Images\bhf-logo.png" />
+    <Content Include="Images\borrowed-hearts-foundation_orig.png" />
     <Content Include="Images\e_for_everyone.png" />
     <Content Include="Images\Gayla-Cake-Logo.png" />
     <Content Include="Images\pancake_breakfast.png" />
@@ -219,13 +219,6 @@
     </Compile>
     <Compile Include="Administration\Administrator.aspx.designer.cs">
       <DependentUpon>Administrator.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\Export.aspx.cs">
-      <DependentUpon>Export.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Export.aspx.designer.cs">
-      <DependentUpon>Export.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\ShopperVisitOverview.aspx.cs">
       <DependentUpon>ShopperVisitOverview.aspx</DependentUpon>

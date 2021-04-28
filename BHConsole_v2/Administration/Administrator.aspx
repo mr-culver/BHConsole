@@ -11,23 +11,23 @@
         <hr />
         <div class="row">
             <div class="col">
-                <h2>General Overview</h2>
-                <asp:Label ID="Label11" CssClass="h5" runat="server" Text="Shoppers this month: "></asp:Label>
+                <h2>This Month</h2>
+                <asp:Label ID="Label11" CssClass="h5" runat="server" Text="Shoppers: "></asp:Label>
                 <asp:Label ID="lbl_shoppersMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
                 <br />
-                <asp:Label ID="Label12" CssClass="h5" runat="server" Text="Children served this month: "></asp:Label>
+                <asp:Label ID="Label12" CssClass="h5" runat="server" Text="Children served: "></asp:Label>
                 <asp:Label ID="lbl_childrenMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
                 <br />
-                <asp:Label ID="Label13" CssClass="h5" runat="server" Text="Volunteers this month: "></asp:Label>
+                <asp:Label ID="Label13" CssClass="h5" runat="server" Text="Volunteers: "></asp:Label>
                 <asp:Label ID="lbl_volunteersMonth" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
                 <br />
-                <asp:Label ID="Label14" CssClass="h5" runat="server" Text="Volunteer hours: "></asp:Label>
+                <asp:Label ID="Label14" CssClass="h5" runat="server" Text="Hours: "></asp:Label>
                 <asp:Label ID="lbl_volunteerHours" CssClass="h5 text-info" runat="server" Text=""></asp:Label>
             </div>
         </div>
         <hr />
         <div class="row">
-            <div class="col">
+            <div class="col col-lg-6 col-md-12">
                 <div class="card border-primary mb-3">
                     <div class="card-header">Clocked In Volunteers</div>
                     <div class="card-body">
@@ -35,7 +35,6 @@
                             <Columns>
                                 <asp:BoundField DataField="TimeIn" HeaderText="Time In" SortExpression="TimeIn" DataFormatString="{0:g}" />
                                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                                <asp:BoundField DataField="Shift Length" HeaderText="Shift" ReadOnly="True" SortExpression="Shift Length" />
                             </Columns>
                             <HeaderStyle CssClass="table-primary" />
                             <RowStyle CssClass="table-light" />
@@ -71,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col col-lg-6 col-md-12">
                 <div class="card border-success mb-3">
                     <div class="card-header">Shoppers Today: <asp:Label ID="lbl_shoppers" runat="server" Text=""></asp:Label></div>
                     <div class="card-body">

@@ -15,6 +15,7 @@ namespace BHConsole_v2
         {
             lbl_result.CssClass = "text-warning";
             lbl_result.Text = "";
+            txt_Password.Focus();
         }
 
         protected void btn_Login_Click(object sender, EventArgs e)
