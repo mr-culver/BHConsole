@@ -5,6 +5,7 @@
     <script src="../Scripts/jquery.mask.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery.mask.js"></script>
     <div class="container">
         <br />
         <h2 class="display-4">Shopper Visit Overview</h2>
@@ -17,27 +18,6 @@
                 <asp:Label ID="Label6" runat="server" Text="Children Served (day): " CssClass="h4"></asp:Label><asp:Label ID="lbl_childrenServedDay" runat="server" Text="" CssClass="h4 text-info"></asp:Label>
                 <br />
                 <asp:Label ID="Label8" runat="server" Text="Children Served (month): " CssClass="h4"></asp:Label><asp:Label ID="lbl_childrenServedMonth" runat="server" Text="" CssClass="h4 text-info"></asp:Label>
-
-
-                <%--<asp:FormView ID="ChildrenServedFormView" runat="server" CssClass="container-fluid" DataSourceID="ChildrenServedDataSource">
-                    <EditItemTemplate>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text="Children Served: " Font-Size="XX-Large" CssClass="text-info"></asp:Label>
-                        <asp:Label ID="ChildrenServedLabel" runat="server" Text='<%# Bind("ChildrenServed") %>' Font-Size="XX-Large"/>
-                        <br />
-                    </ItemTemplate>
-                </asp:FormView>
-                <asp:SqlDataSource ID="ChildrenServedDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SelectChildrenServedDay" SelectCommandType="StoredProcedure">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="Day" SessionField="Day" Type="Int32" />
-                        <asp:SessionParameter Name="Month" SessionField="Month" Type="Int32" />
-                        <asp:SessionParameter Name="Year" SessionField="Year" Type="Int32" />
-                    </SelectParameters>
-                </asp:SqlDataSource>--%>
-                
             </div>
         </div>
         <hr />
@@ -58,7 +38,6 @@
                         <asp:Button ID="btn_exportDay" runat="server" Text="Export Day" CssClass="btn btn-info btn-block" OnClick="btn_exportDay_Click" />
                     </div>
                 </div>
-                
                 <asp:Label ID="lbl_error" runat="server" Text="Label" CssClass="test-danger"></asp:Label>
             </div>
         </div>
@@ -77,6 +56,7 @@
                 <div class="row">
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <br />
+                        <%--Grid View--%>
                         <asp:GridView ID="VisitGridView" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="Id,ShopperId" DataSourceID="VisitDataSource" GridLines="None" EmptyDataText="No visits" ShowHeaderWhenEmpty="True" PageSize="20">
                             <Columns>
                                 <asp:BoundField DataField="Timestamp" DataFormatString="{0:t}" HeaderText="Time" SortExpression="Timestamp" />
@@ -101,6 +81,7 @@
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <br />
                         <div class="card border-info mb-2">
+                            <%--Detail View--%>
                             <div class="card-header">Detail View</div>
                             <div class="card-body">
                                 <asp:FormView ID="VisitDetailsFormView" runat="server" DataKeyNames="Id,VisitId" DataSourceID="VisitDetailsDataSource" EmptyDataText="Select an item on the left to display it here." CssClass="container-fluid" OnItemInserted="VisitDetailsFormView_ItemInserted" OnItemUpdated="VisitDetailsFormView_ItemUpdated" OnItemDeleted="VisitDetailsFormView_ItemDeleted">
@@ -112,13 +93,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="txt_email"><strong>Email</strong></label><asp:Label ID="Label2" runat="server" Text=" * " CssClass="text-danger"></asp:Label>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text=" Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger"></asp:RegularExpressionValidator>                              
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_email" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text="Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Display="Dynamic"></asp:RegularExpressionValidator>                              
                                             <asp:TextBox ID="txt_email" runat="server" CssClass="form-control" Text='<%# Bind("Email") %>' ></asp:TextBox>
                                         </div>
                                         <div class="form-group">
                                             <label for="txt_phone"><strong>Phone Number</strong></label>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" Invalid Phone Number"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" * Invalid Phone Number"></asp:RegularExpressionValidator>
                                             <asp:TextBox ID="txt_phone" ClientIDMode="Static" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' ></asp:TextBox>
                                             <script type="text/javascript">
                                                 jQuery(function ($) {
@@ -174,6 +155,17 @@
                                             </div>
                                         </div>
                                     </EditItemTemplate>
+                                    <EmptyDataTemplate>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="text-body">
+                                                    Select an item on the left to display it here
+                                                </p>
+                                                <br />
+                                                <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" CssClass="btn btn-success btn-sm btn-block" />
+                                            </div>
+                                        </div>
+                                    </EmptyDataTemplate>
                                     <InsertItemTemplate>
                                         <div class="form-group">
                                             <label for="txt_name"><strong>Name</strong></label><asp:Label ID="Label1" runat="server" Text=" * " CssClass="text-danger"></asp:Label>
@@ -182,13 +174,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="txt_email"><strong>Email</strong></label><asp:Label ID="Label2" runat="server" Text=" * " CssClass="text-danger"></asp:Label>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text=" Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger"></asp:RegularExpressionValidator>                              
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_email" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text=" Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Display="Dynamic"></asp:RegularExpressionValidator>                              
                                             <asp:TextBox ID="txt_email" runat="server" CssClass="form-control" Text='<%# Bind("Email") %>' ></asp:TextBox>
                                         </div>
                                         <div class="form-group">
                                             <label for="txt_phone"><strong>Phone Number</strong></label>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" Invalid Phone Number"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" * Invalid Phone Number"></asp:RegularExpressionValidator>
                                             <asp:TextBox ID="txt_phone" ClientIDMode="Static" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' ></asp:TextBox>
                                             <script type="text/javascript">
                                                 jQuery(function ($) {

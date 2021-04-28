@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
             <div class="jumbotron">
-                <h1 class="display-4">Welcome to Borrowed Hearts!</h1>
+                <h1 class="display-4 text-center">Welcome to Borrowed Hearts!</h1>
                 <hr />
                 <div class="row">
                     <div class="col-lg-6">
@@ -20,6 +20,7 @@
                 </div>
             </div>
             <br />
+            <%--Main Content Row--%>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card border-primary mb-3">
@@ -28,28 +29,14 @@
                             <p class="card-text">
                                 Our mission is to lead the efforts in which every foster family attains the rights to clothing, hygiene, development, and a loving support system.
                             </p>
-                            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/e_for_everyone.png" CssClass="d-block user-select-none" Width="100%"/>
+                            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/e_for_everyone.png" CssClass="card-img" Width="100%"/>
                         </div>
-                        <%--<div class="card-body">
-                            <h5 class="card-title">Thanks to our partners!</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">The Isaiah 1:17 Project</li>
-                                <li class="list-group-item">Hangers</li>
-                                <li class="list-group-item">St. Vincent Early Learning</li>
-                                <li class="list-group-item">YMCA Boxing</li>
-                                <li class="list-group-item">Hillcrest, Ozanam Shelter</li>
-                                <li class="list-group-item">The Dream Center</li>
-                                <li class="list-group-item">United Methodist Youth Home</li>
-                                <li class="list-group-item">Teacher Locker & Granted</li>
-                            </ul>
-                        </div>--%>
                     </div>
                     <div class="card border-primary mb-3" draggable="false">
                         <div class="card-header">Donate with Venmo</div>
                         <div class="card-body">
-                            <%--<h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>--%>
                             <br />
-                            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/bhdonateqr.jpeg" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice"/>
+                            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/bhdonateqr.jpeg" CssClass="card-img" Width="100%" preserveAspectRatio="xMidYMid slice"/>
                         </div>
                         <div class="card-body">
                             <asp:LinkButton ID="LinkButton2" class="btn btn-info btn-block" runat="server" href="https://www.borrowedheartsfoundation.org/donate.html">More ways to donate</asp:LinkButton>
@@ -60,13 +47,18 @@
                     <div class="card border-secondary mb-3" draggable="false">
                             <div class="card-header">Fundraising Events</div>
                         <div class="card-body">
+                            <p class="card-text">
+                                Borrowed Hearts hosts two fundraising events each year, a pancake breakfast and a trivia night. 
+                                <br />
+                                <br />
+                                Ask the store clerk for more information, we would love your support!
+                            </p>
                             <h5 class="card-title">This year's event</h5>
                             <p class="card-text">
                                 Info still being determined!
                             </p>
                             <h5 class="card-title">Last year's event</h5>
-                            <%--<h6 class="card-subtitle text-muted">2020 Virtual Pancake Breakfast</h6>--%>
-                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/pancake_breakfast.png" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice"/>
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/borrowed-hearts-foundation_orig.png" CssClass="card-img" Width="100%" preserveAspectRatio="xMidYMid slice"/>
                         </div>
                         <div class="card-body">
                             <asp:LinkButton ID="LinkButton1" class="btn btn-info btn-block" runat="server" href="https://www.borrowedheartsfoundation.org/fundraising-events.html">More Info</asp:LinkButton>
@@ -78,8 +70,8 @@
                         <div class="card-header">Birthday Resources!</div>
                         <div class="card-body">
                             <%--<h5 class="card-title align-content-center">Sponsors</h5>--%>
-                            <asp:Image ID="img_card3_2" runat="server" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice" ImageUrl="~/Images/Gayla-Cake-Logo.png" />
-                            <asp:Image ID="img_card3_1" runat="server" CssClass="d-block user-select-none" Width="100%" preserveAspectRatio="xMidYMid slice" ImageUrl="~/Images/balloonsjyslogo.jpg" />
+                            <asp:Image ID="img_card3_2" runat="server" CssClass="card-img" Width="100%" preserveAspectRatio="xMidYMid slice" ImageUrl="~/Images/Gayla-Cake-Logo.png" />
+                            <asp:Image ID="img_card3_1" runat="server" CssClass="card-img" Width="100%" preserveAspectRatio="xMidYMid slice" ImageUrl="~/Images/balloonsjyslogo.jpg" />
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Free cakes provided by GaylaCakes</li>
                                 <li class="list-group-item">Balloon arrangements from Balloons by JYS</li>

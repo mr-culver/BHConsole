@@ -24,13 +24,13 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// RequiredFieldValidatorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
 
         /// <summary>
         /// txt_name control.
@@ -42,13 +42,13 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.TextBox txt_name;
 
         /// <summary>
-        /// RegularExpressionValidator1 control.
+        /// RegularExpressionValidatorEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorEmail;
 
         /// <summary>
         /// txt_email control.
@@ -60,13 +60,13 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.TextBox txt_email;
 
         /// <summary>
-        /// RegularExpressionValidator2 control.
+        /// RegularExpressionValidatorPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorPhone;
 
         /// <summary>
         /// txt_phone control.

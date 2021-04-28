@@ -15,10 +15,20 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbl_error.Text = "";
-            SetLabels();
-            //lbl_volunteerHours.Text = VolunteerTimepunch.TotalVolunteerHours(Convert.ToInt32(Session["Month"]), Convert.ToInt32(Session["Year"])).ToString();
-            VolunteerOverviewGridView.DataBind();
+            if (Session["Permission"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else if (Session["Permission"].Equals("9"))
+            {
+                lbl_error.Text = "";
+                SetLabels();
+                VolunteerOverviewGridView.DataBind();
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
         protected void txt_volunteerMonthYear_TextChanged(object sender, EventArgs e)
         {

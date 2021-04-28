@@ -5,16 +5,13 @@
     <div class="container">
         <h1 class="display-4">Volunteers</h1>
         <hr />
+        <br />
         <div class="row">
             <div class="col-lg-6">
                 <asp:LinkButton ID="lbtn_clockin" CssClass="btn btn-success btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockin.aspx" Font-Size="XX-Large">Clock In</asp:LinkButton>
             </div>
             <div class="col-lg-6">
                 <asp:LinkButton ID="lbtn_clockout" CssClass="btn btn-danger btn-lg btn-block" runat="server" PostBackUrl="~/Volunteer/VolunteerClockout.aspx" Font-Size="XX-Large">Clock Out</asp:LinkButton>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
             </div>
         </div>
     </div>

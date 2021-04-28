@@ -14,15 +14,25 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            lbl_time.Text = System.DateTime.Now.ToString();
-            Session["Year"] = System.DateTime.Now.Year.ToString();
-            Session["Month"] = System.DateTime.Now.Month.ToString();
-            Session["Day"] = System.DateTime.Now.Day.ToString();
-            SetLabels();
-            ClockedInGridview.DataBind();
-            dd_clockedin.DataBind();
-            lbl_shoppers.Text = GetNumberOfVisitsToday();
+            if (Session["Permission"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else if (Session["Permission"].Equals("9"))
+            {
+                lbl_time.Text = System.DateTime.Now.ToString();
+                Session["Year"] = System.DateTime.Now.Year.ToString();
+                Session["Month"] = System.DateTime.Now.Month.ToString();
+                Session["Day"] = System.DateTime.Now.Day.ToString();
+                SetLabels();
+                ClockedInGridview.DataBind();
+                dd_clockedin.DataBind();
+                lbl_shoppers.Text = GetNumberOfVisitsToday();
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void btn_clockout_Click(object sender, EventArgs e)

@@ -5,15 +5,17 @@
     <script src="../Scripts/jquery.mask.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../Scripts/jquery.mask.js"></script>
     <div class="container" >
         <br />
+
         <h2 class="display-4">Volunteer Overview</h2>
         <hr />
         <div class="row">
-            <div class="col col-lg-5 col-md-12">
+            <div class="col col-lg-6 col-md-12">
                 <asp:Label ID="lbl_datetimeVolunteer" runat="server" Text="" Font-Size="XX-Large" CssClass="text-info"></asp:Label>
             </div>
-            <div class="col col-lg-7 col-md-12">
+            <div class="col col-lg-6 col-md-12">
                 <asp:Label ID="Label6" runat="server" Text="Volunteer Hours (day): " CssClass="h4"></asp:Label><asp:Label ID="lbl_volunteerHoursDay" runat="server" Text="" CssClass="h4 text-info"></asp:Label>
                 <br />
                 <asp:Label ID="Label8" runat="server" Text="Volunteer Hours (month): " CssClass="h4"></asp:Label><asp:Label ID="lbl_volunteerHoursMonth" runat="server" Text="" CssClass="h4 text-info"></asp:Label>
@@ -21,13 +23,13 @@
         </div>
         <hr />
         <div class="row">
-            <div class="col col-lg-5 col-md-12 col-sm-12">
+            <div class="col col-lg-6 col-md-12 col-sm-12">
                 <asp:Label ID="lbl_volunteerMonthYear" runat="server" Text="Change Date" CssClass="text-body" ></asp:Label>
                 <div class="input-group">
                     <asp:TextBox ID="txt_volunteerMonthYear" runat="server" CssClass="form-control" TextMode="Date" OnTextChanged="txt_volunteerMonthYear_TextChanged" AutoPostBack="true"></asp:TextBox>
                 </div>
             </div>
-            <div class="col col-lg-7 col-md-12 col-sm-12">
+            <div class="col col-lg-6 col-md-12 col-sm-12">
                 <br />
                 <div class="row">
                     <div class="col">
@@ -53,7 +55,7 @@
             <div class="tab-pane fade show active" id="day">
                 <%--Day Row--%>
                 <div class="row">
-                    <div class="col col-lg-5 col-md-12 col-sm-12">
+                    <div class="col col-lg-6 col-md-12 col-sm-12">
                         <br />
                         <asp:GridView ID="VolunteerOverviewGridView" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" DataSourceID="VolunteerOverviewDataSource" EmptyDataText="No items to display" DataKeyNames="Id" HeaderStyle-CssClass="table-info" AllowPaging="True" GridLines="None" RowStyle-CssClass="table-light" ShowHeaderWhenEmpty="True" PageSize="20">
                             <Columns>
@@ -81,23 +83,28 @@
                             </UpdateParameters>
                         </asp:SqlDataSource>
                     </div>
-                    <div class="col col-lg-7 col-md-12 col-sm-12">
+                    <div class="col col-lg-6 col-md-12 col-sm-12">
                         <br />
                         <div class="card border-info mb-2">
                             <div class="card-header">Detail View</div>
                             <div class="card-body">
                                 <asp:FormView ID="VolunteerOverviewFormView" runat="server" DataKeyNames="Id" DataSourceID="VolunteerOverviewDetailDataSource" EmptyDataText="Nothing has been selected" CssClass="container-fluid" OnItemDeleted="VolunteerOverviewFormView_ItemDeleted" OnItemInserted="VolunteerOverviewFormView_ItemInserted" OnItemUpdated="VolunteerOverviewFormView_ItemUpdated">
                                     <EditItemTemplate>
-                                        <strong>Name</strong>
+                                        <strong>Name</strong><asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ErrorMessage="Name is required" Text=" * Required field" CssClass="text-danger" ControlToValidate="NameTextBox"></asp:RequiredFieldValidator>
                                         <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>'  CssClass="form-control"/>
                                         <br />
-                                        <strong>Email</strong>
+                                        <strong>Email</strong><asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid email format" ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Text=" * Invalid Email Format"></asp:RegularExpressionValidator>
                                         <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>'  CssClass="form-control"/>
                                         <br />
-                                        <strong>Phone</strong>
-                                        <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>'  CssClass="form-control"/>
+                                        <strong>Phone</strong><asp:RegularExpressionValidator ID="RegularExpressionValidatorPhone" runat="server" ErrorMessage="Invalid phone number" ControlToValidate="PhoneTextBox" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" * Invalid Phone Number"></asp:RegularExpressionValidator>
+                                        <asp:TextBox ID="PhoneTextBox" runat="server" ClientIDMode="Static" Text='<%# Bind("Phone") %>' CssClass="form-control"/>
+                                        <script type="text/javascript">
+                                            jQuery(function ($) {
+                                                $("#PhoneTextBox").mask("(999) 999-9999", { placeholder: "(###) ###-####" });
+                                            });
+                                        </script>
                                         <hr />
-                                        <strong>Time In</strong>
+                                        <strong>Time In</strong><asp:RequiredFieldValidator ID="RequiredFieldValidatorTimeIn" runat="server" ErrorMessage="A time in is required" Text=" * Required field" CssClass="text-danger" ControlToValidate="TimeInTextBox"></asp:RequiredFieldValidator>
                                         <asp:TextBox ID="TimeInTextBox" runat="server" Text='<%# Bind("TimeIn") %>'  CssClass="form-control"/>
                                         <br />
                                         <strong>Time Out</strong>
@@ -112,17 +119,33 @@
                                             </div>
                                         </div>
                                     </EditItemTemplate>
+                                    <EmptyDataTemplate>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="text-body">
+                                                    Select an item on the left to display it here
+                                                </p>
+                                                <br />
+                                                <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" CssClass="btn btn-success btn-sm btn-block" />
+                                            </div>
+                                        </div>
+                                    </EmptyDataTemplate>
                                     <InsertItemTemplate>
-                                        <strong>Name</strong>
+                                        <strong>Name</strong><asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ErrorMessage="Name is required" Text=" * Required field" CssClass="text-danger" ControlToValidate="NameTextBox"></asp:RequiredFieldValidator>
                                         <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>'  CssClass="form-control"/>
                                         <br />
-                                        <strong>Email</strong>
+                                        <strong>Email</strong><asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid email format" ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger" Text=" * Invalid Email Format" Display="Dynamic"></asp:RegularExpressionValidator>
                                         <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>'  CssClass="form-control"/>
                                         <br />
-                                        <strong>Phone</strong>
-                                        <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>'  CssClass="form-control"/>
+                                        <strong>Phone</strong><asp:RegularExpressionValidator ID="RegularExpressionValidatorPhone" runat="server" ErrorMessage="Invalid phone number" ControlToValidate="PhoneTextBox" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" * Invalid Phone Number"></asp:RegularExpressionValidator>
+                                        <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' ClientIDMode="Static" CssClass="form-control"/>
+                                        <script type="text/javascript">
+                                            jQuery(function ($) {
+                                                $("#PhoneTextBox").mask("(999) 999-9999", { placeholder: "(###) ###-####" });
+                                            });
+                                        </script>
                                         <hr />
-                                        <strong>Time In</strong>
+                                        <strong>Time In</strong><asp:RequiredFieldValidator ID="RequiredFieldValidatorTimeIn" runat="server" ErrorMessage="A time in is required" Text=" * Required field" CssClass="text-danger" ControlToValidate="TimeInTextBox"></asp:RequiredFieldValidator>
                                         <asp:TextBox ID="TimeInTextBox" runat="server" Text='<%# Bind("TimeIn") %>'  CssClass="form-control" TextMode="DateTimeLocal" />
                                         <br />
                                         <strong>Time Out</strong>

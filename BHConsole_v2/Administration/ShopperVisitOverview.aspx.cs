@@ -15,11 +15,21 @@ namespace BHConsole_v2.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetLabels();
-            lbl_error.Text = "";
-            VisitGridView.DataBind();
-            MonthVisitGridView.DataBind();
-            //ChildrenServedFormView.DataBind();
+            if (Session["Permission"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else if (Session["Permission"].Equals("9"))
+            {
+                SetLabels();
+                lbl_error.Text = "";
+                VisitGridView.DataBind();
+                MonthVisitGridView.DataBind();
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
         protected void txt_shopperMonthYear_TextChanged(object sender, EventArgs e)
         {
