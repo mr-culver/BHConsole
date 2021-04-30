@@ -16,7 +16,6 @@ Borrowed Hearts is a non-profit store where foster workers and children can shop
 
 * Bootstrap 4.6
 * Jquery 3.5.1
-* Minty CSS for Bootstrap from Bootswatch
 
 ### Installing
 
@@ -32,10 +31,10 @@ Borrowed Hearts is a non-profit store where foster workers and children can shop
 
 Contributors names and contact info
 
-Kaylee Barton - Team Leader
+Kaylee Barton - Team Leader - 
 kabarton1@eagles.usi.edu
 
-Mitchel Culver - Programming Lead
+Mitchel Culver - Programming Lead - 
 mitchelrculver@gmail.com
 
 Gavyn Huff - Programming Assistant
