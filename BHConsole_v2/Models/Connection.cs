@@ -20,13 +20,6 @@ namespace BHConsole.Models
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BHDBConnectionString"].ConnectionString);
             return conn;
-            //Connection sessionObject = (Connection)HttpContext.Current.Session["SQLConnection"];
-
-            //if(sessionObject == null)
-            //{
-            //    HttpContext.Current.Session["SQLConnection"] = new Connection();
-            //}
-            //return (Connection)HttpContext.Current.Session["SQLConnection"];
         }
     }
 }
