@@ -25,8 +25,6 @@ Borrowed Hearts is a non-profit store where foster workers and children can shop
 
 * See documentation
 
-## Help
-
 ## Authors
 
 Contributors names and contact info
