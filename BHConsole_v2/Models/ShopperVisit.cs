@@ -13,6 +13,7 @@ namespace BHConsole.Models
 
         public ShopperVisit 
         (
+            // Constructor arguments
             string name, 
             string email, 
             string phone, 
@@ -24,6 +25,7 @@ namespace BHConsole.Models
             string relationOtherDescription
         )
         {
+            // build object that will be inserted into the database
             this.shopper = new Shopper();
             this.shopper.Name = name;
             this.shopper.Email = email;
