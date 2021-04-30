@@ -20,35 +20,27 @@ Borrowed Hearts is a non-profit store where foster workers and children can shop
 
 ### Installing
 
-* Things should be here
+* Microsoft.CodeDom.Providers.DotNetCompilerPlatform is required and not included in the project files -- download with NuGet package manager
 
 ### Program Execution
 
-* How the program runs
-* Explanations for methods/models
+* See documentation
 
 ## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
 Contributors names and contact info
 
 Kaylee Barton - Team Leader
-Email
+kabarton1@eagles.usi.edu
 
 Mitchel Culver - Programming Lead
 mitchelrculver@gmail.com
 
 Gavyn Huff - Programming Assistant
-Email
 
 Maximum Smock - Documentation Lord
-Email
 
 ## Version History
 
@@ -59,8 +51,6 @@ Email
 
 PLACEHOLDER
 Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+* [minty css from bootswatch](https://bootswatch.com/minty/?optionsRadios=option1)
+* [Bootstrap documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+* [CSV Export Tool](https://github.com/jitbit/CsvExport)
