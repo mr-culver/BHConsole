@@ -47,8 +47,6 @@ Maximum Smock - Documentation Lord
 
 ## Acknowledgments
 
-PLACEHOLDER
-Inspiration, code snippets, etc.
 * [Minty CSS from Bootswatch](https://bootswatch.com/minty/?optionsRadios=option1)
 * [Bootstrap documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
-* [CSV Export Tool - Thank you!](https://github.com/jitbit/CsvExport)
+* [CSV Export Tool - Extremely useful](https://github.com/jitbit/CsvExport)
