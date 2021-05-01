@@ -1,5 +1,5 @@
 # Project Agape
-
+##### The highest form of love and charity
 This is an ASP.NET Web App developed to supply the Borrowed Hearts Foundation with an interface for their shoppers and volunteers to use.
 
 ## Description
@@ -41,13 +41,14 @@ Maximum Smock - Documentation Lord
 
 ## Version History
 
-* 0.1
+* 1.0
     * Initial Release
+    * Basic design requirements
 
 ## Acknowledgments
 
 PLACEHOLDER
 Inspiration, code snippets, etc.
-* [minty css from bootswatch](https://bootswatch.com/minty/?optionsRadios=option1)
+* [Minty CSS from Bootswatch](https://bootswatch.com/minty/?optionsRadios=option1)
 * [Bootstrap documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
-* [CSV Export Tool](https://github.com/jitbit/CsvExport)
+* [CSV Export Tool - Thank you!](https://github.com/jitbit/CsvExport)
